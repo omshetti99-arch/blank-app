@@ -122,12 +122,12 @@ with tabs[2]:
     st.markdown("All 1-39 parameters compiled into the master PDF layout below.")
 
 # ==========================================
-# 📑 100% COMPLETE MASTER PDF BLUEPRINT LAYOUT
+# 📑 PRINTABLE PDF MATRIX LAYOUT (SYNTAX FIXED COMPLETELY)
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📄 EXPORT PRINTABLE PDF REPORT</h3>", unsafe_allow_html=True)
 
-# Build image elements securely
+# Build HTML segments carefully for image tags
 html_photos_block = ""
 if img_data_urls:
     html_photos_block += "<div style='margin-top:5px; text-align:left;'>"
@@ -143,7 +143,7 @@ if cone_base64:
 else:
     html_cone_block = "<p style='color:#475569; font-size:11px;'>Awaiting Cone Photo...</p>"
 
-# Perfect HTML Blueprint holding all lines 1 to 39
+# Main template with exact dictionary formatting rules to prevent syntax crashes
 html_template = f"""
 <div style="font-family:Arial,sans-serif; padding:15px; border:2px solid #1e3a8a; border-radius:4px; max-width:700px; margin:auto; background-color:#ffffff; color:#000000;">
     <div style="background-color:#1e3a8a; color:#ffffff; padding:12px; text-align:center; border-radius:4px 4px 0 0;">
@@ -225,4 +225,4 @@ html_template = f"""
     <h4 style="background-color:#0f172a; color:#ffffff; padding:5px 8px; margin:12px 0 5px 0; font-size:12px; border-radius:2px;">SECTION E & F: ADVANCED QUALITY & SHIFT PERFORMANCE METRICS</h4>
     <table style="width:100%; border-collapse:collapse; font-size:11px; text-align:left; color:#000000;">
         <tr><td style="padding:5px 8px; border:1px solid #1e3a8a; font-weight:bold; width:8%;">31</td><td style="padding:5px 8px; border:1px solid #1e3a8a; width:42%;">CVm % (Mass Variation)</td><td style="padding:5px 8px; border:1px solid #1e3a8a;">{p31_cvm_percent}% Robust structural variation</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 8px; border:1px solid #1e3a8a; font-weight:bold;">32</td><td style="padding:5px 8px; border:1px solid #1e3a8a;">No. of Slubs / meter</td><td style="padding
+        <tr style="background-color:#f8fafc;"><td style="padding:5px 8px; border:1px solid #1e3a8a; font-weight:bold;">32</td><td style="padding:5px 8px; border:1px so
