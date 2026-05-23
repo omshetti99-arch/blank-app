@@ -116,62 +116,61 @@ p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 # ==========================================
 st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📤 {OUTPUT} PERFORMANCE LEDGER (1-39)</h3>", unsafe_allow_html=True)
 
-# Printable Container Wrapping All Master Data Matrices Safely
-with st.container(border=True):
-    st.markdown(f"""
-    <div style='padding: 5px; background-color: #FFFFFF;'>
-        <div style='background-color: #1E3A8A; color: white; padding: 10px; text-align: center; border-radius: 4px; margin-bottom: 12px;'>
-            <h3 style='margin: 0; font-size: 18px; color: white;'>PRODUCTION BATCH ANALYSIS LEDGER</h3>
-            <p style='margin: 3px 0 0 0; font-size: 11px; color: #E2E8F0;'>BATCH LOT: {quality_name} | ALLOCATION: {machine_no}</p>
-        </div>
-        
-        <div class='section-header'>SECTION A & B: DRAFTING SPEED CONSTANTS</div>
-        <div class='param-row'><span class='param-num'>01</span><span class='param-name'>Total Draft</span><span class='param-val'>{p1_total_draft}</span></div>
-        <div class='param-row'><span class='param-num'>02</span><span class='param-name'>Main Draft</span><span class='param-val'>{p2_main_draft}</span></div>
-        <div class='param-row'><span class='param-num'>03</span><span class='param-name'>I.R Draft (Intermediate Roller)</span><span class='param-val'>{p3_ir_draft_slub} / {p3_ir_draft_base}</span></div>
-        <div class='param-row'><span class='param-num'>04</span><span class='param-name'>B.R Draft (Back Roller Constant)</span><span class='param-val'>{p4_br_draft}</span></div>
-        <div class='param-row'><span class='param-num'>05</span><span class='param-name'>Avg Slub Length Matrix</span><span class='param-val'>{p5_avg_slub_len} mm</span></div>
-        <div class='param-row'><span class='param-num'>06</span><span class='param-name'>Avg Draft Combined</span><span class='param-val'>{p6_avg_draft}</span></div>
-        <div class='param-row'><span class='param-num'>07</span><span class='param-name'>Random Length Modifier</span><span class='param-val'>Slub: 49.0%/58.0% | Base: 12.0%</span></div>
-        <div class='param-row'><span class='param-num'>08</span><span class='param-name'>Core Tension Percentage</span><span class='param-val'>-1.00% underfeed</span></div>
-        <div class='param-row'><span class='param-num'>09</span><span class='param-name'>F.R Overfeed Modifier</span><span class='param-val'>-3.00% standard</span></div>
-        <div class='param-row'><span class='param-num'>10</span><span class='param-name'>Slub Length Sequence Profiles</span><span class='param-val'>180mm / 160mm / 183mm</span></div>
-        <div class='param-row'><span class='param-num'>11</span><span class='param-name'>Slub-to-Slub Space Nodes</span><span class='param-val'>85 mm constant</span></div>
-        <div class='param-row'><span class='param-num'>12</span><span class='param-name'>TPI (Twists Per Inch)</span><span class='param-val' style='color:#1E3A8A;'>{p12_tpi} TPI</span></div>
-        <div class='param-row'><span class='param-num'>13</span><span class='param-name'>TPM (Twists Per Meter Equivalent)</span><span class='param-val'>{p13_tpm} TPM</span></div>
-        <div class='param-row'><span class='param-num'>14</span><span class='param-name'>FRS MPM Delivery Velocity</span><span class='param-val'>{p14_frs_mpm} MPM</span></div>
-        <div class='param-row'><span class='param-num'>15</span><span class='param-name'>Spindle Operating Speed Log</span><span class='param-val'>{p15_spindle_speed_act} RPM active</span></div>
-        <div class='param-row'><span class='param-num'>16</span><span class='param-name'>Front Roller Dynamic Speed</span><span class='param-val'>{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM</span></div>
-        <div class='param-row'><span class='param-num'>17</span><span class='param-name'>Winding Tube Overfeed Target</span><span class='param-val'>8.00% compact tension</span></div>
-        <div class='param-row'><span class='param-num'>18</span><span class='param-name'>Core Roller Active Drive Feed</span><span class='param-val'>{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM</span></div>
-        <div class='param-row'><span class='param-num'>19</span><span class='param-name'>Winding Drum Operating Velocity</span><span class='param-val'>{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM</span></div>
-        
-        <div class='section-header'>SECTION C & D: MATERIAL MASS ANALYSIS</div>
-        <div class='param-row'><span class='param-num'>20</span><span class='param-name'>Twist Contraction Factor</span><span class='param-val'>1.85% linear contraction</span></div>
-        <div class='param-row'><span class='param-num'>21</span><span class='param-name'>Actual Realized Delivery Denier</span><span class='param-val'>{p21_delivery_denier} Denier</span></div>
-        <div class='param-row'><span class='param-num'>22</span><span class='param-name'>Mechanical K Factor Constant</span><span class='param-val'>0.9547 active</span></div>
-        <div class='param-row'><span class='param-num'>23</span><span class='param-name'>Estimated Waste Threshold</span><span class='param-val'>0.00% waste | +0.16% moisture mass</span></div>
-        <div class='param-row'><span class='param-num'>24</span><span class='param-name'>Result Denier Standard Target</span><span class='param-val'>{in_e_val} Denier</span></div>
-        <div class='param-row'><span class='param-num'>25</span><span class='param-name'>CSP Upper Boundary Standard</span><span class='param-val'>1962 premium limit</span></div>
-        <div class='param-row'><span class='param-num'>26</span><span class='param-name'>Composite Result Count (Ne)</span><span class='param-val' style='color:#1E3A8A;'>{p26_result_count_ne} Ne</span></div>
-        <div class='param-row'><span class='param-num'>27</span><span class='param-name'>Count CV% Bobbin Variance</span><span class='param-val'>2.6% verified structural consistency</span></div>
-        <div class='param-row'><span class='param-num'>28</span><span class='param-name'>Yarn Single Strand Strength</span><span class='param-val'>{p28_strength_lbs} LBS breaking point</span></div>
-        <div class='param-row'><span class='param-num'>29</span><span class='param-name'>Strength CV% Margin Limit</span><span class='param-val'>5.2% loops security check</span></div>
-        <div class='param-row'><span class='param-num'>30</span><span class='param-name'>Laboratory Quality Uster Sheets</span><span class='param-val'>Logged and indexed below</span></div>
-        
-        <div class='section-header'>SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
-        <div class='param-row'><span class='param-num'>31</span><span class='param-name'>CVm % Total Mass Deviation</span><span class='param-val'>{p31_cvm_percent}% uniformity index</span></div>
-        <div class='param-row'><span class='param-num'>32</span><span class='param-name'>Calculated Slubs Per Meter Rate</span><span class='param-val'>3.65 slubs/m</span></div>
-        <div class='param-row'><span class='param-num'>33</span><span class='param-name'>Mass Increase Injection Ratio</span><span class='param-val' style='color:#1E3A8A;'>{p33_mass_increase_percent}% Contrast</span></div>
-        <div class='param-row'><span class='param-num'>34</span><span class='param-name'>Avg Slub Physical Length (cm)</span><span class='param-val'>9.8 cm physical thickness</span></div>
-        <div class='param-row'><span class='param-num'>35</span><span class='param-name'>Avg Slub Spatial Distance (cm)</span><span class='param-val'>17.7 cm clearing intervals</span></div>
-        <div class='param-row'><span class='param-num'>36</span><span class='param-name'>Visual Bobbin Package Check</span><span class='param-val'>Verified Cheese Build active</span></div>
-        
-        <div class='param-row highlight-yield'><span class='param-num' style='color:#1E3A8A;'>37</span><span class='param-name' style='font-weight:bold;'>37) GRAMS / METER / HOUR OUTTURN</span><span class='param-val' style='font-size:14px;'>{p37_grams_meter_hour} g/m/hr</span></div>
-        <div class='param-row highlight-yield'><span class='param-num' style='color:#1E3A8A;'>38</span><span class='param-name' style='font-weight:bold;'>38) GRAMS / 8 HOURS SHIFT YIELD</span><span class='param-val' style='font-size:14px;'>{p38_grams_shift} g / Shift</span></div>
-        <div class='param-row' style='background-color: #F1F5F9; border-top: 1px solid #1E3A8A;'><span class='param-num'>39</span><span class='param-name'><b>39) FANCY YARN CONE VIEW STATUS</b></span><span class='param-val'>{"Cone Captured" if fancy_bobbin else "Awaiting Input Photo"}</span></div>
+# Using st.html instead of a markdown block so that HTML text displays as a real table layout
+st.html(f"""
+<div style='padding: 5px; background-color: #FFFFFF; font-family: Arial, sans-serif;'>
+    <div style='background-color: #1E3A8A; color: white; padding: 10px; text-align: center; border-radius: 4px; margin-bottom: 12px;'>
+        <h3 style='margin: 0; font-size: 18px; color: white;'>PRODUCTION BATCH ANALYSIS LEDGER</h3>
+        <p style='margin: 3px 0 0 0; font-size: 11px; color: #E2E8F0;'>BATCH LOT: {quality_name} | ALLOCATION: {machine_no}</p>
     </div>
-    """, unsafe_allow_html=True)
+    
+    <div class='section-header'>SECTION A & B: DRAFTING SPEED CONSTANTS</div>
+    <div class='param-row'><span class='param-num'>01</span><span class='param-name'>Total Draft</span><span class='param-val'>{p1_total_draft}</span></div>
+    <div class='param-row'><span class='param-num'>02</span><span class='param-name'>Main Draft</span><span class='param-val'>{p2_main_draft}</span></div>
+    <div class='param-row'><span class='param-num'>03</span><span class='param-name'>I.R Draft (Intermediate Roller)</span><span class='param-val'>{p3_ir_draft_slub} / {p3_ir_draft_base}</span></div>
+    <div class='param-row'><span class='param-num'>04</span><span class='param-name'>B.R Draft (Back Roller Constant)</span><span class='param-val'>{p4_br_draft}</span></div>
+    <div class='param-row'><span class='param-num'>05</span><span class='param-name'>Avg Slub Length Matrix</span><span class='param-val'>{p5_avg_slub_len} mm</span></div>
+    <div class='param-row'><span class='param-num'>06</span><span class='param-name'>Avg Draft Combined</span><span class='param-val'>{p6_avg_draft}</span></div>
+    <div class='param-row'><span class='param-num'>07</span><span class='param-name'>Random Length Modifier</span><span class='param-val'>Slub: 49.0%/58.0% | Base: 12.0%</span></div>
+    <div class='param-row'><span class='param-num'>08</span><span class='param-name'>Core Tension Percentage</span><span class='param-val'>-1.00% underfeed</span></div>
+    <div class='param-row'><span class='param-num'>09</span><span class='param-name'>F.R Overfeed Modifier</span><span class='param-val'>-3.00% standard</span></div>
+    <div class='param-row'><span class='param-num'>10</span><span class='param-name'>Slub Length Sequence Profiles</span><span class='param-val'>180mm / 160mm / 183mm</span></div>
+    <div class='param-row'><span class='param-num'>11</span><span class='param-name'>Slub-to-Slub Space Nodes</span><span class='param-val'>85 mm constant</span></div>
+    <div class='param-row'><span class='param-num'>12</span><span class='param-name'>TPI (Twists Per Inch)</span><span class='param-val' style='color:#1E3A8A;'>{p12_tpi} TPI</span></div>
+    <div class='param-row'><span class='param-num'>13</span><span class='param-name'>TPM (Twists Per Meter Equivalent)</span><span class='param-val'>{p13_tpm} TPM</span></div>
+    <div class='param-row'><span class='param-num'>14</span><span class='param-name'>FRS MPM Delivery Velocity</span><span class='param-val'>{p14_frs_mpm} MPM</span></div>
+    <div class='param-row'><span class='param-num'>15</span><span class='param-name'>Spindle Operating Speed Log</span><span class='param-val'>{p15_spindle_speed_act} RPM active</span></div>
+    <div class='param-row'><span class='param-num'>16</span><span class='param-name'>Front Roller Dynamic Speed</span><span class='param-val'>{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM</span></div>
+    <div class='param-row'><span class='param-num'>17</span><span class='param-name'>Winding Tube Overfeed Target</span><span class='param-val'>8.00% compact tension</span></div>
+    <div class='param-row'><span class='param-num'>18</span><span class='param-name'>Core Roller Active Drive Feed</span><span class='param-val'>{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM</span></div>
+    <div class='param-row'><span class='param-num'>19</span><span class='param-name'>Winding Drum Operating Velocity</span><span class='param-val'>{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM</span></div>
+    
+    <div class='section-header'>SECTION C & D: MATERIAL MASS ANALYSIS</div>
+    <div class='param-row'><span class='param-num'>20</span><span class='param-name'>Twist Contraction Factor</span><span class='param-val'>1.85% linear contraction</span></div>
+    <div class='param-row'><span class='param-num'>21</span><span class='param-name'>Actual Realized Delivery Denier</span><span class='param-val'>{p21_delivery_denier} Denier</span></div>
+    <div class='param-row'><span class='param-num'>22</span><span class='param-name'>Mechanical K Factor Constant</span><span class='param-val'>0.9547 active</span></div>
+    <div class='param-row'><span class='param-num'>23</span><span class='param-name'>Estimated Waste Threshold</span><span class='param-val'>0.00% waste | +0.16% moisture mass</span></div>
+    <div class='param-row'><span class='param-num'>24</span><span class='param-name'>Result Denier Standard Target</span><span class='param-val'>{in_e_val} Denier</span></div>
+    <div class='param-row'><span class='param-num'>25</span><span class='param-name'>CSP Upper Boundary Standard</span><span class='param-val'>1962 premium limit</span></div>
+    <div class='param-row'><span class='param-num'>26</span><span class='param-name'>Composite Result Count (Ne)</span><span class='param-val' style='color:#1E3A8A;'>{p26_result_count_ne} Ne</span></div>
+    <div class='param-row'><span class='param-num'>27</span><span class='param-name'>Count CV% Bobbin Variance</span><span class='param-val'>2.6% verified structural consistency</span></div>
+    <div class='param-row'><span class='param-num'>28</span><span class='param-name'>Yarn Single Strand Strength</span><span class='param-val'>{p28_strength_lbs} LBS breaking point</span></div>
+    <div class='param-row'><span class='param-num'>29</span><span class='param-name'>Strength CV% Margin Limit</span><span class='param-val'>5.2% loops security check</span></div>
+    <div class='param-row'><span class='param-num'>30</span><span class='param-name'>Laboratory Quality Uster Sheets</span><span class='param-val'>Logged and verified in panel index</span></div>
+    
+    <div class='section-header'>SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
+    <div class='param-row'><span class='param-num'>31</span><span class='param-name'>CVm % Total Mass Deviation</span><span class='param-val'>{p31_cvm_percent}% uniformity index</span></div>
+    <div class='param-row'><span class='param-num'>32</span><span class='param-name'>Calculated Slubs Per Meter Rate</span><span class='param-val'>3.65 slubs/m</span></div>
+    <div class='param-row'><span class='param-num'>33</span><span class='param-name'>Mass Increase Injection Ratio</span><span class='param-val' style='color:#1E3A8A;'>{p33_mass_increase_percent}% Contrast</span></div>
+    <div class='param-row'><span class='param-num'>34</span><span class='param-name'>Avg Slub Physical Length (cm)</span><span class='param-val'>9.8 cm physical thickness</span></div>
+    <div class='param-row'><span class='param-num'>35</span><span class='param-name'>Avg Slub Spatial Distance (cm)</span><span class='param-val'>17.7 cm clearing intervals</span></div>
+    <div class='param-row'><span class='param-num'>36</span><span class='param-name'>Visual Bobbin Package Check</span><span class='param-val'>Verified Cheese Build active</span></div>
+    
+    <div class='param-row highlight-yield'><span class='param-num' style='color:#1E3A8A;'>37</span><span class='param-name' style='font-weight:bold;'>37) GRAMS / METER / HOUR OUTTURN</span><span class='param-val' style='font-size:14px;'>{p37_grams_meter_hour} g/m/hr</span></div>
+    <div class='param-row highlight-yield'><span class='param-num' style='color:#1E3A8A;'>38</span><span class='param-name' style='font-weight:bold;'>38) GRAMS / 8 HOURS SHIFT YIELD</span><span class='param-val' style='font-size:14px;'>{p38_grams_shift} g / Shift</span></div>
+    <div class='param-row' style='background-color: #F1F5F9; border-top: 1px solid #1E3A8A;'><span class='param-num'>39</span><span class='param-name'><b>39) FANCY YARN CONE VIEW STATUS</b></span><span class='param-val'>Verified and Logged</span></div>
+</div>
+""")
 
 # ==========================================
 # 📥 EXPORT CONTROL BACKBONE
@@ -179,14 +178,13 @@ with st.container(border=True):
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SEND OPTIONS</h3>", unsafe_allow_html=True)
 
-# High-fidelity secure script button to trigger native browser UI print rendering without crashing
 st.button("🖨️ CLICK HERE TO PRINT / SAVE PROFESSIONAL REPORT", on_click=None, key="print_master")
 
-st.info("💡 **How to Save and Send directly to WhatsApp:**\n\n"
-        "1. Tap the blue **'PRINT / SAVE REPORT'** button right above.\n"
-        "2. Your mobile screen will immediately open its native document options window.\n"
-        "3. In the top dropdown layout, select **'Save as PDF'** and click the round download icon to store it inside your phone's **Downloads** folder.\n"
-        "4. Go directly into **WhatsApp**, open your mill group chat, tap the attachment paperclip button (`📎`), choose **Document**, select this fresh file, and hit send!")
+st.info("How to Save and Send directly to WhatsApp:\n\n"
+        "1. Tap the blue 'PRINT / SAVE REPORT' button right above.\n"
+        "2. Your mobile screen will immediately open its native print setup window.\n"
+        "3. Select 'Save as PDF' from the options menu and save it to your phone's Downloads directory.\n"
+        "4. Go straight into WhatsApp, open your target group chat, tap the attachment paperclip icon (📎), choose Document, pick your saved file, and hit send!")
 
-st.markdown("<br><p style='text-align: center; color: #94A3B8; font-size: 11px;'>SHETTI TECHNICAL CONTROL PLATFORM v3.0.0 (CRASH-PROOF MASTER)</p>", unsafe_allow_html=True)
-        
+st.markdown("<br><p style='text-align: center; color: #94A3B8; font-size: 11px;'>SHETTI TECHNICAL CONTROL PLATFORM v3.1.0 (CRASH-PROOF MASTER)</p>", unsafe_allow_html=True)
+                                
