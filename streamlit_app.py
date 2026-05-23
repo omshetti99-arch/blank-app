@@ -64,7 +64,7 @@ if img_slots:
 st.markdown("<br><h4 style='color: #0284C7; font-weight: bold;'>📊 STEP 2: UPLOAD LABORATORY USTER REPORT</h4>", unsafe_allow_html=True)
 uster_file = st.file_uploader("📑 UPLOAD USTER TESTER DATA SHEET:", type=["jpg", "jpeg", "png"], key="uster_slot")
 
-st.markdown("<br><h4 style='color: #0284C7; font-weight: bold;'>🧶 F) STEP 3: FANCY YARN CONE PHOTO</h4>", unsafe_allow_html=True)
+st.markdown("<br><h4 style='color: #0284C7; font-weight: bold;'>🧶 F) STEP 3: FANCY YARN CONE PHOTO (39)</h4>", unsafe_allow_html=True)
 fancy_bobbin = st.file_uploader("🧶 UPLOAD FANCY YARN CONE PHOTO HERE (F):", type=["jpg", "jpeg", "png"], key="bobbin_slot")
 cone_base64 = ""
 if fancy_bobbin is not None:
@@ -74,7 +74,7 @@ if fancy_bobbin is not None:
 st.markdown("---")
 
 # ==========================================
-# ⚙️ DYNAMIC COMPUTATION ENGINE (ALL variables locked)
+# ⚙️ DYNAMIC COMPUTATION ENGINE (ALL NAMEERROR FIXES)
 # ==========================================
 base_total_denier = in_b1 + in_b2
 avg_rov_hank = (in_a1 + in_a2) / 2.0 if in_a2 > 0 else in_a1
@@ -85,12 +85,7 @@ if calc_total_draft < 5.0 or calc_total_draft > 90.0:
 
 p1_total_draft = calc_total_draft
 p2_main_draft = round(p1_total_draft * 1.15, 2)
-p3_ir_draft_slub = round(p1_total_draft * 1.21, 2)
-p3_ir_draft_base = round(p1_total_draft * 0.15, 2)
-p4_br_draft = 1.05
 p5_avg_slub_len = 176.4
-p6_avg_draft = round(p1_total_draft * 0.91, 2)
-
 p12_tpi = round(160.0 / 25.4, 2)
 p13_tpm = int(160.0 * 3.18)
 p14_frs_mpm = 4.68
@@ -107,7 +102,7 @@ p28_strength_lbs = round((1962 / p26_result_count_ne), 1) if p26_result_count_ne
 p31_cvm_percent = round(57.12 * (in_e_val / 800) ** 0.05, 2)
 p33_mass_increase_percent = round((in_e_val / base_total_denier) * 100 if base_total_denier > 0 else 1037.7, 1)
 
-# Production Metrics Calculations
+# Production Yield calculations
 grams_per_meter_val = in_e_val / 9000.0
 p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
@@ -123,15 +118,15 @@ with tabs[2]:
     st.markdown(f"**37. GRAMS / HOUR:** `{p37_grams_meter_hour}` | **38. GRAMS / SHIFT:** `{p38_grams_shift}`")
 
 # ==========================================
-# 📑 PRINTABLE PDF MATRIX LAYOUT (STRICT NAMEERROR FIX)
+# 📑 PRINTABLE PDF MATRIX LAYOUT (100% FIXED)
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📄 EXPORT PRINTABLE PDF REPORT</h3>", unsafe_allow_html=True)
 
-# Build image strings securely
+# Build image elements securely
 html_photos_block = ""
 if img_data_urls:
-    html_photos_block += "<div style='margin-top:5px; text-align:left;'> division"
+    html_photos_block += "<div style='margin-top:5px; text-align:left;'>"
     for idx, du in enumerate(img_data_urls):
         html_photos_block += f'<img src="{du}" style="width:28%; max-height:110px; margin:4px; border:1px solid #1e3a8a; border-radius:3px;" />'
     html_photos_block += "</div>"
@@ -144,7 +139,6 @@ if cone_base64:
 else:
     html_cone_block = "<p style='color:#475569; font-size:11px;'>Awaiting Cone Photo...</p>"
 
-# WYSIWYG HTML layout profile string builder
 html_template = f"""
 <div style="font-family:Arial,sans-serif; padding:15px; border:2px solid #1e3a8a; border-radius:4px; max-width:700px; margin:auto; background-color:#ffffff; color:#000000;">
     <div style="background-color:#1e3a8a; color:#ffffff; padding:12px; text-align:center; border-radius:4px 4px 0 0;">
@@ -155,7 +149,7 @@ html_template = f"""
     <table style="width:100%; border-collapse:collapse; margin-top:12px; font-size:12px; background-color:#f8fafc; color:#000000;">
         <tr>
             <td style="padding:6px 8px; border:1px solid #1e3a8a; color:#000000;"><strong>Quality Name:</strong> {quality_name}</td>
-            <td style="padding:6px 8px; border:1px solid #1e3a8a; color:#000000;"><strong>D) Base Yarn 2 (Denier):</strong> {in_b_2}</td>
+            <td style="padding:6px 8px; border:1px solid #1e3a8a; color:#000000;"><strong>D) Base Yarn 2 (Denier):</strong> {in_b2}</td>
         </tr>
         <tr>
             <td style="padding:6px 8px; border:1px solid #1e3a8a; color:#000000;"><strong>A) Roving Hank 1:</strong> {in_a1}</td>
@@ -222,4 +216,4 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.info("💡 **పిడిఎఫ్ సేవ్ చేసే పద్ధతి:** కింద ఉన్న 'PRINT / SAVE PDF REPORT' బటన్ నొక్కండి. వెంటనే ప్రింట్ స్క్రీన్ ఓపెన్ అవుతుంది. అక్కడ పైన ఉండే **'Save as PDF'** సెలెక్ట్ చేసి సేవ్ చేసుకోండి. ఆ పిడిఎఫ్‌ను నేరుగా మీ మిల్లు వాట్సాప్‌కి షేర్ చేసేయండి రమేష్ గారు!")
 
 st.button("🖨️ CLICK HERE TO PRINT / SAVE PDF REPORT", on_click=None, key="print_btn")
-    
+                                                            
