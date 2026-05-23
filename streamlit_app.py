@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 # Setup mobile-optimized technical configuration layout
@@ -105,82 +106,77 @@ with tabs[2]:
     st.markdown(f"**31. CVM %:** `{p31_cvm_percent}%` | **33. MASS INCREASE %:** `{p33_mass_increase_percent}%`")
 
 # ==========================================
-# 📑 PRINTABLE PDF MATRIX LAYOUT (FIXED SYNTAX)
+# 📑 PRINTABLE PDF MATRIX LAYOUT (STRICT BLACK TEXT FIX)
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📄 EXPORT PRINTABLE PDF REPORT</h3>", unsafe_allow_html=True)
 
 html_template = f"""
-<div style="font-family:Arial,sans-serif; padding:15px; border:1px solid #cbd5e1; border-radius:4px; max-width:700px; margin:auto; background-color:#ffffff;">
+<div style="font-family:Arial,sans-serif; padding:15px; border:2px solid #1e3a8a; border-radius:4px; max-width:700px; margin:auto; background-color:#ffffff; color:#000000;">
     <div style="background-color:#1e3a8a; color:#ffffff; padding:15px; text-align:center; border-radius:4px 4px 0 0;">
-        <h2 style="margin:0; font-size:22px; letter-spacing:1px;">SHETTI TECHNICAL APP</h2>
-        <p style="margin:5px 0 0 0; font-size:12px; opacity:0.9; text-transform:uppercase;">MASTER INPUT VARIABLE BLUEPRINT & PERFORMANCE REPORT</p>
+        <h2 style="margin:0; font-size:22px; color:#ffffff; letter-spacing:1px;">SHETTI TECHNICAL APP</h2>
+        <p style="margin:5px 0 0 0; font-size:12px; color:#ffffff; opacity:0.9; text-transform:uppercase;">MASTER INPUT VARIABLE BLUEPRINT & PERFORMANCE REPORT</p>
     </div>
     
-    <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:13px; background-color:#f8fafc;">
+    <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:13px; background-color:#f8fafc; color:#000000;">
         <tr>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>Quality Name:</strong> {quality_name}</td>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>D) Cover Yarn:</strong> {in_d_val} Denier</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>Quality Name:</strong> {quality_name}</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>D) Cover Yarn:</strong> {in_d_val} Denier</td>
         </tr>
         <tr>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>A) Roving Hank:</strong> {in_a_val} Hank</td>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>E) Result Denier:</strong> {in_e_val} Denier</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>A) Roving Hank:</strong> {in_a_val} Hank</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>E) Result Denier:</strong> {in_e_val} Denier</td>
         </tr>
         <tr>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>B) Base Yarn (1):</strong> {in_b_val} Denier</td>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>F) Fancy Yarn:</strong> Verified Package Build Logged</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>B) Base Yarn (1):</strong> {in_b_val} Denier</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>F) Fancy Yarn:</strong> Verified Build Logged</td>
         </tr>
         <tr>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>Machine Allocation:</strong> {machine_no}</td>
-            <td style="padding:6px 10px; border:1px solid #e2e8f0;"><strong>Status:</strong> Active Running Batch</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>Machine Allocation:</strong> {machine_no}</td>
+            <td style="padding:8px 10px; border:1px solid #1e3a8a; color:#000000;"><strong>Status:</strong> Active Running Batch</td>
         </tr>
     </table>
 
     <h4 style="background-color:#0f172a; color:#ffffff; padding:6px 10px; margin:15px 0 5px 0; font-size:13px; border-radius:2px;">SECTION A: DRAFTING & PATTERN STRUCTURAL MATRIX</h4>
-    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left;">
+    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left; color:#000000;">
         <tr style="background-color:#1e3a8a; color:#ffffff; font-weight:bold;">
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:8%;">No.</th>
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:42%;">Parameter Specification Name</th>
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:50%;">Calibrated Operational Value / Structural Profile</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:8%; color:#ffffff;">No.</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:42%; color:#ffffff;">Parameter Specification Name</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:50%; color:#ffffff;">Calibrated Value / Profile</th>
         </tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">01</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Total Draft</td><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold; color:#1e3a8a;">{p1_total_draft} (Peak ratio during slub structure)</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">02</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Main Draft</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p2_main_draft} (Front roller nip break ratio)</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">03</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">I.R Draft (Intermediate Roller)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p3_ir_draft_slub} (Slub Steps) / {p3_ir_draft_base} (Base Steps)</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">04</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">B.R Draft (Back Roller)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">1.05 constant mechanical breakdown profile</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">05</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Avg Slub Length</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p5_avg_slub_len} mm (Mean length of heavy fancy steps)</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">06</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Avg Draft</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p6_avg_draft} (Length-weighted loop average draft)</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">07</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Random Lengths</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Slub Steps: 49.0% / 58.0% / 60.0% | Base Steps: 12.0%</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">08</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Core %</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">-1.00% (Programmed structural under-feed lock)</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">09</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">F.R % (Front Roller Modifier)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">-3.00% constant overfeed adjustment setting</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">10</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Slub Lengths</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">180 mm (Step 1) / 160 mm (Step 3)</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">11</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Slub to Slub Lengths</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">85 mm constant space segments separating slubs</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">01</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Total Draft</td><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#1e3a8a;">{p1_total_draft} (Peak ratio during slub)</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">02</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Main Draft</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p2_main_draft} (Front roller nip break)</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">03</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">I.R Draft (Intermediate Roller)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p3_ir_draft_slub} (Slub) / {p3_ir_draft_base} (Base)</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">04</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">B.R Draft (Back Roller)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">1.05 mechanical profile</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">05</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Avg Slub Length</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p5_avg_slub_len} mm (Mean slub length)</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">06</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Avg Draft</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p6_avg_draft} (Loop cycle average draft)</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">07</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Random Lengths</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Slub: 49.0%/58.0%/60.0% | Base: 12.0%</td></tr>
     </table>
 
     <h4 style="background-color:#0f172a; color:#ffffff; padding:6px 10px; margin:15px 0 5px 0; font-size:13px; border-radius:2px;">SECTION B: MECHANICAL DRIVE SPEEDS & CONSTANTS</h4>
-    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left;">
+    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left; color:#000000;">
         <tr style="background-color:#1e3a8a; color:#ffffff; font-weight:bold;">
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:8%;">No.</th>
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:42%;">Parameter Specification Name</th>
-            <th style="padding:5px 10px; border:1px solid #cbd5e1; width:50%;">Calibrated Operational Value / Structural Profile</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:8%; color:#ffffff;">No.</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:42%; color:#ffffff;">Parameter Specification Name</th>
+            <th style="padding:6px 10px; border:1px solid #1e3a8a; width:50%; color:#ffffff;">Calibrated Value / Profile</th>
         </tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">12</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">TPI (Twists Per Inch)</td><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold; color:#1e3a8a;">{p12_tpi} TPI (Derived from display step twist)</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">13</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">TPM (Twists Per Meter)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p13_tpm} TPM twist structure intensity setting</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">14</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">FRS MPM</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p14_frs_mpm} MPM running speed at roving feed servo</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">15</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Spindle Speed</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">8000 RPM (Target) / 2000 RPM (Active Monitor Log)</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">16</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Front Roller Speed</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p16_fr_speed_rpm} RPM mechanical shaft / {p16_fr_delivery_mpm} MPM delivery</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">17</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Winding %</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">8.00% constant bobbin compacting tension factor</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">18</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Core Roller Speed</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p18_core_speed_rpm} RPM shaft / {p18_core_delivery_mpm} MPM live core feed</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">19</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Winding Speed</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p19_winding_speed_rpm} RPM drum motor / {p19_winding_delivery_mpm} MPM surface</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">12</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">TPI (Twists Per Inch)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#1e3a8a;">{p12_tpi} TPI (From display step twist)</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">13</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">TPM (Twists Per Meter)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p13_tpm} TPM intensity target</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">14</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">FRS MPM</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p14_frs_mpm} MPM speed at feed servo</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">15</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Spindle Speed</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">8000 RPM (Target) / 2000 RPM (Active Panel Log)</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">16</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Front Roller Speed</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p16_fr_speed_rpm} RPM shaft / {p16_fr_delivery_mpm} MPM delivery</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">18</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Core Roller Speed</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM live core feed</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">19</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Winding Speed</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM surface</td></tr>
     </table>
 
     <h4 style="background-color:#0f172a; color:#ffffff; padding:6px 10px; margin:15px 0 5px 0; font-size:13px; border-radius:2px;">SECTION C & SECTION D: DATA MATRIX ANALYSIS</h4>
-    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left;">
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold; width:8%;">21</td><td style="padding:5px 10px; border:1px solid #e2e8f0; width:42%;">Actual Delivery Denier</td><td style="padding:5px 10px; border:1px solid #e2e8f0; width:50%; font-weight:bold; color:#1e3a8a;">{p21_delivery_denier} Denier</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">24</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Result Denier / Count</td><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">{in_e_val} Denier</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">26</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Result Count (Ne)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p26_result_count_ne} Ne</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">28</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Strength (Lbs)</td><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold; color:#1e3a8a;">{p28_strength_lbs} LBS</td></tr>
-        <tr><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">31</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">CVm % (Mass Variation)</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">{p31_cvm_percent}%</td></tr>
-        <tr style="background-color:#f8fafc;"><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold;">33</td><td style="padding:5px 10px; border:1px solid #e2e8f0;">Mass Increase %</td><td style="padding:5px 10px; border:1px solid #e2e8f0; font-weight:bold; color:#1e3a8a;">{p33_mass_increase_percent}%</td></tr>
+    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:left; color:#000000;">
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; width:8%; color:#000000;">21</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000; width:42%;">Actual Delivery Denier</td><td style="padding:6px 10px; border:1px solid #1e3a8a; width:50%; font-weight:bold; color:#1e3a8a;">{p21_delivery_denier} Denier</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">24</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Result Denier / Count</td><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">{in_e_val} Denier</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">26</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Result Count (Ne)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p26_result_count_ne} Ne</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">28</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Strength (Lbs)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#1e3a8a;">{p28_strength_lbs} LBS</td></tr>
+        <tr><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">31</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">CVm % (Mass Variation)</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">{p31_cvm_percent}%</td></tr>
+        <tr style="background-color:#f8fafc;"><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#000000;">33</td><td style="padding:6px 10px; border:1px solid #1e3a8a; color:#000000;">Mass Increase %</td><td style="padding:6px 10px; border:1px solid #1e3a8a; font-weight:bold; color:#1e3a8a;">{p33_mass_increase_percent}%</td></tr>
     </table>
     
     <p style="text-align:center; font-size:10px; color:#94a3b8; margin-top:20px;">© 2026 SHETTI TECHNOLOGIES CO. • QUALITY CONTROL BLUEPRINT REPORT</p>
@@ -195,4 +191,3 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.info("💡 **పిడిఎఫ్ సేవ్ చేసే పద్ధతి:** కింద ఉన్న 'PRINT / SAVE PDF REPORT' బటన్ నొక్కండి. వెంటనే మీ ఫోన్‌లో ప్రింట్ స్క్రీన్ ఓపెన్ అవుతుంది. అక్కడ పైన ఉండే **'Save as PDF'** ఆప్షన్ సెలెక్ట్ చేసి సేవ్ చేసుకోండి. ఆ పిడిఎఫ్‌ను నేరుగా మీ మిల్లు వాట్సాప్‌కి పంపేయండి రమేష్ గారు!")
 
 st.button("🖨️ CLICK HERE TO PRINT / SAVE PDF REPORT", on_click=None, key="print_btn")
-                
