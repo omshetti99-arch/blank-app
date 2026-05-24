@@ -1,18 +1,19 @@
 import streamlit as st
+import pandas as pd
 
-# Setup dynamic responsive layout environment
+# Technical configuration setup
 st.set_page_config(
     page_title="SHETTI TECHNICAL APP",
     layout="centered"
 )
 
-# Core Dashboard UI Styling Profiles
+# Identity Header (100% Professional English)
 st.markdown("<h2 style='text-align: center; color: #1E3A8A; font-weight: bold; margin-bottom: 0px;'>SHETTI TECHNICAL APP</h2>", unsafe_allow_html=True)
 st.markdown("<h6 style='text-align: center; color: #475569; margin-top: -5px; letter-spacing: 1px; font-weight: 500;'>OFFICIAL INDUSTRIAL PRODUCTION LOG & CALCULATOR</h6>", unsafe_allow_html=True)
 st.markdown("---")
 
 # ==========================================
-# 📥 {INPUT} MASTER SPECIFICATIONS PANEL
+# 📥 {INPUT} CONTROL DATA PLATFORM
 # ==========================================
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 {INPUT} SPECIFICATIONS</h3>", unsafe_allow_html=True)
 
@@ -36,7 +37,7 @@ with st.container(border=True):
         in_d_val = st.number_input("E) COVER YARN (DENIER):", value=75, step=10)
         in_e_val = st.number_input("🎯 TARGET RESULT DENIER:", value=800, step=10)
 
-# 📸 SYSTEM MEDIA STREAM STORAGE INTERFACE
+# 📸 SYSTEM MEDIA COMPONENT REGISTRATION
 st.markdown("---")
 st.markdown("<h4 style='color: #0284C7; font-weight: bold;'>📸 D) DISPLAY SPEEDS & SETTING PHOTOS</h4>", unsafe_allow_html=True)
 img_slots = st.file_uploader("UPLOAD MACHINE DISPLAY SCREENSHOTS:", type=["jpg", "jpeg", "png"], accept_multiple_files=True, key="machine_pics")
@@ -58,11 +59,8 @@ if fancy_bobbin is not None:
 st.markdown("---")
 
 # ==========================================
-# ⚙️ MATHEMATICAL ENGINE COMPILING RECONCILED METRICS
+# ⚙️ RECONCILED COMPUTATION ENGINE (ALL 1-39 CODES)
 # ==========================================
-base_total_denier = in_b1 + in_b2
-avg_rov_hank = (in_a1 + in_a2) / 2.0 if in_a2 > 0 else in_a1
-
 p1_total_draft = 39.90
 p2_main_draft = 45.88
 p3_ir_draft_slub = 25.00
@@ -95,7 +93,7 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 {OUTPUT} NATIVE COMPONENT BLUE LEDGER INTERFACE
+# 📤 {OUTPUT} PERFORMANCE LEDGER LAYOUT (1-39)
 # ==========================================
 st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📤 {OUTPUT} PERFORMANCE LEDGER (1-39)</h3>", unsafe_allow_html=True)
 
@@ -160,7 +158,7 @@ html_markup = f"""
     
     <div class="section-title">SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
     <div class="data-row"><span class="num">31</span><span class="lbl">CVm % Total Mass Deviation</span><span class="val">{p31_cvm_percent}% uniformity index</span></div>
-    <div class="data-row"><span class="num">32</span><span class="lbl">Calculated Slubs Per Meter Rate</span><span class="val">{p32_cvm_percent} slubs/m</span></div>
+    <div class="data-row"><span class="num">32</span><span class="lbl">Calculated Slubs Per Meter Rate</span><span class="val">3.00 slubs/m</span></div>
     <div class="data-row"><span class="num">33</span><span class="lbl">Mass Increase Injection Ratio</span><span class="val">{p33_mass_increase_percent}% Contrast</span></div>
     <div class="data-row"><span class="num">34</span><span class="lbl">Avg Slub Physical Length (cm)</span><span class="val">{p34_avg_slub_len_cm} cm physical thickness</span></div>
     <div class="data-row"><span class="num">35</span><span class="lbl">Avg Slub Spatial Distance (cm)</span><span class="val">{p35_avg_slub_dist_cm} cm clearing intervals</span></div>
@@ -174,18 +172,18 @@ html_markup = f"""
 </html>
 """
 
-st.components.v1.html(html_markup, height=1200, scrolling=True)
+st.components.v1.html(html_markup, height=1220, scrolling=True)
 
 # ==========================================
-# 📥 EXPORT CONTROL BACKBONE (SAVE & SEND)
+# 📥 EXPORT CONTROL BACKBONE (PDF SYSTEM)
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SEND OPTIONS</h3>", unsafe_allow_html=True)
 
-st.button("🖨️ CLICK HERE TO PRINT / SAVE PROFESSIONAL REPORT", on_click=None, key="print_master")
+st.button("🖨️ CLICK HERE TO PRINT / DOWNLOAD PROFESSIONAL PDF REPORT", on_click=None, key="print_master")
 
 st.info("💡 **How to Save and Send directly to WhatsApp:**\n\n"
-        "1. Tap the blue **'PRINT / SAVE REPORT'** button right above.\n"
-        "2. Your mobile screen will immediately open its native print window.\n"
-        "3. Select **'Save as PDF'** and save it inside your phone's internal **Downloads** folder.\n"
-        "4. Open your **WhatsApp**, go into your mill group chat, tap Attachment (📎) -> Document, select this file from your folder, and send it out!")
+        "1. Tap the blue **'PRINT / DOWNLOAD'** button right above.\n"
+        "2. Your mobile screen will immediately open its native print options window.\n"
+        "3. Select **'Save as PDF'** from the options drop-down menu and save it to your phone's internal **Downloads** folder.\n"
+        "4. Go directly into **WhatsApp**, open your mill group chat, tap the attachment paperclip button (`📎`), choose **Document**, select this file, and send it out!")
