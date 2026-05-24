@@ -187,4 +187,4 @@ st.info("How to Save and Send directly to WhatsApp:\n\n"
         "4. Go straight into WhatsApp, open your target group chat, tap the attachment paperclip icon (📎), choose Document, pick your saved file, and hit send!")
 
 st.markdown("<br><p style='text-align: center; color: #94A3B8; font-size: 11px;'>SHETTI TECHNICAL CONTROL PLATFORM v3.1.0 (CRASH-PROOF MASTER)</p>", unsafe_allow_html=True)
-                                
+        
