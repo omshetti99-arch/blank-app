@@ -63,7 +63,6 @@ st.markdown("---")
 base_total_denier = in_b1 + in_b2
 avg_rov_hank = (in_a1 + in_a2) / 2.0 if in_a2 > 0 else in_a1
 
-# Dynamic Draft and TPI calculations linked directly to input fields
 denier_diff = (in_e_val - base_total_denier - in_d_val)
 calc_total_draft = round((5315 / avg_rov_hank) / denier_diff * 10, 2) if denier_diff > 0 else 39.90
 if calc_total_draft < 5.0 or calc_total_draft > 90.0:
@@ -149,7 +148,6 @@ st.components.v1.html(html_markup, height=580, scrolling=True)
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
 
-# Dynamic plain-text data architecture compilation
 report_text = f"""SHETTI TECHNICAL APP - PRODUCTION REPORT
 --------------------------------------------------
 QUALITY LOT BATCH: {quality_name} | {machine_no}
@@ -174,7 +172,6 @@ TARGET OUTTURN SPEC: {in_e_val} Denier
 39. FANCY YARN CONE STATUS: Logged and Verified
 --------------------------------------------------"""
 
-# Direct clean storage stream download handler
 st.download_button(
     label="📥 DOWNLOAD TECHNICAL BATCH REPORT",
     data=report_text,
@@ -182,7 +179,7 @@ st.download_button(
     mime="text/plain"
 )
 
-st.info("💡 **How to transfer file directly to WhatsApp:**\n\n"
-        "1. Click the blue **'DOWNLOAD TECHNICAL BATCH REPORT'** button directly above.\n"
-        "2. The system bypasses print layout overlays and saves the text document straight to your mobile file directory inside the **Downloads** folder.\n"
-        "3. Open **WhatsApp**, enter your target mill group, click Attachment (📎) -> Document, open your device folder, select this file, and send!")
+st.info("💡 **ఫైల్ డౌన్‌లోడ్ చేసి వాట్సాప్‌లో పంపే విధానం:**\n\n"
+        "1. పైన ఉన్న నీలం రంగు 'DOWNLOAD TECHNICAL BATCH REPORT' బటన్ నొక్కండి.\n"
+        "2. ఫైల్ నేరుగా మీ మొబైల్ లోని Downloads ఫోల్డర్‌లోకి సేవ్ అవుతుంది.\n"
+        "3. ఇప్పుడు వాట్సాప్ ఓపెన్ చేసి మీ మిల్లు గ్రూప్‌లోకి వెళ్లి Attachment (📎) -> Document నొక్కి, ఆ ఫైల్‌ను సెలెక్ట్ చేసి పంపండి!")
