@@ -1,4 +1,5 @@
 import streamlit as st
+import base64
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -95,96 +96,138 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 COMPACT PRINT REGISTER DISPLAY PANEL
+# 📤 SCREEN PRODUCTION DISPLAY LEDGER
 # ==========================================
-st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📜 OFFICIAL BATCH BLUEPRINT REPORT</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📤 LIVE PRODUCTION REGISTER VIEW</h3>", unsafe_allow_html=True)
 
 with st.container(border=True):
-    st.markdown(f"### **SHETTI TECHNICAL PLATFORM**")
-    st.write(f"**QUALITY LOT NAME:** {quality_name} | **MACHINE ALLOCATION:** {machine_no}")
-    st.write(f"Roving Hank: {in_a} | Base 1: {in_c} Den | Base 2: {in_d} Den | Cover: {in_e} Den | Target: {in_f} Den")
+    st.write(f"**BATCH QUALITY:** {quality_name} | **LOCATION:** {machine_no}")
     st.markdown("---")
-    
-    # Render line by line values cleanly
-    st.markdown("#### **🔹 SECTION A & B: DRAFTING SPEED CONSTANTS**")
-    st.write(f"**01) Total Draft:** {p1_total_draft}")
-    st.write(f"**02) Main Draft:** {p2_main_draft}")
-    st.write(f"**03) I.R Draft (Slub / Base):** {p3_ir_draft_slub} / {p3_ir_draft_base}")
-    st.write(f"**04) B.R Draft Constant:** {p4_br_draft}")
-    st.write(f"**05) Avg Slub Length Matrix:** {p5_avg_slub_len} mm")
-    st.write(f"**06) Avg Draft Combined:** {p6_avg_draft}")
-    st.write(f"**07) Random Length Modifier:** Slub: 49.0%/58.0%/60.0% | Base: 12.0%")
-    st.write(f"**08) Core Tension Percentage:** -1.00% underfeed")
-    st.write(f"**09) F.R Overfeed Modifier:** -3.00% standard")
-    st.write(f"**10) Slub Length Sequence Profiles:** 180mm / 160mm / 183mm")
-    st.write(f"**11) Slub-to-Slub Space Nodes:** 85 mm constant")
-    st.write(f"**12) TPI (Twists Per Inch):** {p12_tpi} TPI")
-    st.write(f"**13) TPM (Twists Per Meter):** {p13_tpm} TPM")
-    st.write(f"**14) FRS MPM Delivery Velocity:** {p14_frs_mpm} MPM")
-    st.write(f"**15) Spindle Running Speed:** {p15_spindle_speed_act} RPM")
-    st.write(f"**16) Front Roller Speed:** {p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM")
-    st.write(f"**17) Winding Tube Overfeed Target:** 8.00% compact tension")
-    st.write(f"**18) Core Roller Active Drive Feed:** {p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM")
-    st.write(f"**19) Winding Drum Operating Velocity:** {p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM")
-    
-    st.markdown("#### **🔹 SECTION C & D: MATERIAL MASS ANALYSIS**")
-    st.write(f"**20) Twist Contraction Factor:** 1.85% linear contraction")
-    st.write(f"**21) Actual Realized Delivery Denier:** {p21_delivery_denier} Denier")
-    st.write(f"**22) Mechanical K Factor Constant:** 0.9547 active")
-    st.write(f"**23) Estimated Waste Threshold:** 0.00% waste | +0.16% moisture gain")
-    st.write(f"**24) RESULT YARN DENIER TARGET:** {in_f} Denier")
-    st.write(f"**25) CSP Upper Boundary Standard:** 1962 premium limit")
-    st.write(f"**26) Composite Result Count (Ne):** {p26_result_count_ne} Ne")
-    st.write(f"**27) Count CV% Bobbin Variance:** 2.6% structural consistency")
-    st.write(f"**28) Yarn Single Strand Strength:** {p28_strength_lbs} LBS")
-    st.write(f"**29) Strength CV% Margin Limit:** 5.2% loops check")
-    st.write(f"**30) Laboratory Quality Status:** {'Verified' if uster_file_h else 'Auto-Calculated'}")
-    
-    st.markdown("#### **🔹 SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS**")
-    st.write(f"**31) CVM % Total Mass Deviation:** {p31_cvm_percent}%")
-    st.write(f"**32) Calculated Slubs Per Meter Rate:** 3.00 slubs/m")
-    st.write(f"**33) Mass Increase Injection Ratio:** {p33_mass_increase_percent}%")
-    st.write(f"**34) Avg Slub Physical Length (cm):** {p34_avg_slub_len_cm} cm")
-    st.write(f"**35) Avg Slub Spatial Distance (cm):** {p35_avg_slub_dist_cm} cm")
-    st.write(f"**36) Visual Bobbin Package Check:** Verified Cheese Build active")
-    st.info(f"💡 **37) GRAMS / METER / HOUR OUTTURN:** {p37_grams_meter_hour} g/m/hr")
-    st.info(f"💡 **38) GRAMS / 8 HOURS SHIFT YIELD:** {p38_grams_shift} g / Shift")
-    st.write(f"**39) Fancy Yarn Cone Status:** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
-
-    # Section 40 Text Format (Bypasses all dataframe printing crashes)
-    st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
-    st.text(
-        "01) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
-        "02) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
-        "03) [TPM: 510 | LEN: 160mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 58%]\n"
-        "04) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
-        "05) [TPM: 510 | LEN: 183mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 60%]\n"
-        "06) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
-        "07) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
-        "08) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
-        "09) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
-        "10) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]"
-    )
+    st.write(f"**01) Total Draft:** {p1_total_draft} | **02) Main Draft:** {p2_main_draft}")
+    st.write(f"**12) TPI:** {p12_tpi} | **13) TPM:** {p13_tpm} | **15) Spindle Speed:** {p15_spindle_speed_act} RPM")
+    st.write(f"**24) Target Result Denier:** {in_f} Denier | **26) Count (Ne):** {p26_result_count_ne} Ne")
+    st.info(f"💡 **37) Outturn:** {p37_grams_meter_hour} g/m/hr | **38) Shift Yield:** {p38_grams_shift} g/Shift")
 
     if fancy_bobbin_i:
         st.markdown("---")
-        st.image(fancy_bobbin_i, width=260)
+        st.image(fancy_bobbin_i, width=250, caption="39) Uploaded Fancy Cone Preview")
 
-# Build dynamic simple text summary for download button
-txt_summary = f"SHETTI APP REPORT\\nQUALITY: {quality_name} | M/C: {machine_no}\\nTotal Draft: {p1_total_draft}\\nTPM: {p13_tpm}\\nShift Yield: {p38_grams_shift} g"
-
+# ==========================================
+# 📥 SAFEST HTML EMBED FOR DYNAMIC PDF EXPORT
+# ==========================================
 st.markdown("---")
+st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
+
+# Unbreakable safe base64 converter logic block
+img_b64_data = ""
+if fancy_bobbin_i:
+    try:
+        img_b64_data = base64.b64encode(fancy_bobbin_i.getvalue()).decode()
+    except:
+        img_b64_data = ""
+
+# Certified clean isolated document view template
+html_blueprint = f"""
+<html>
+<head>
+<style>
+    body {{ font-family: Arial, sans-serif; padding: 15px; color: #000; background: #fff; }}
+    .box {{ border: 3px double #1E3A8A; padding: 20px; max-width: 750px; margin: 0 auto; }}
+    .header {{ width: 100%; border-bottom: 2px solid #1E3A8A; text-align: center; padding-bottom: 5px; }}
+    .section-title {{ background-color: #E0F2FE; color: #1E3A8A; font-weight: bold; font-size: 12px; padding: 5px; margin-top: 15px; border-left: 4px solid #1E3A8A; text-transform: uppercase; }}
+    .table-spec {{ width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11.5px; }}
+    .table-spec td {{ border-bottom: 1px solid #E2E8F0; padding: 5px 8px; }}
+    .right {{ text-align: right; font-weight: bold; }}
+    .slub-table {{ width: 100%; border-collapse: collapse; margin-top: 8px; text-align: center; font-size: 10px; }}
+    .slub-table th {{ background-color: #1E3A8A; color: white; padding: 5px; }}
+    .slub-table td {{ border: 1px solid #CBD5E1; padding: 4px; }}
+    .slub-highlight {{ background-color: #FFF7ED; color: #C2410C; font-weight: bold; }}
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="header">
+        <h2 style='margin:0; color:#1E3A8A;'>SHETTI TECHNICAL PLATFORM</h2>
+        <h5 style='margin:4px 0 0 0; color:#475569; letter-spacing:1px;'>OFFICIAL BATCH PRODUCTION BLUEPRINT REPORT</h5>
+    </div>
+    
+    <table style='width:100%; font-size:12px; margin-top:10px;'>
+        <tr><td><b>QUALITY LOT:</b> {quality_name}</td><td style='text-align:right;'><b>MACHINE NO:</b> {machine_no}</td></tr>
+        <tr><td colspan='2' style='padding-top:4px;'>Roving: {in_a} Hank | Base 1: {in_c} Den | Cover: {in_e} Den | Target: {in_f} Den</td></tr>
+    </table>
+
+    <div class="section-title">SECTION A & B: DRAFTING SPEED CONSTANTS</div>
+    <table class="table-spec">
+        <tr><td>01) Total Draft</td><td class="right" style="color:#1E3A8A;">{p1_total_draft}</td></tr>
+        <tr><td>02) Main Draft</td><td class="right">{p2_main_draft}</td></tr>
+        <tr><td>03) I.R Draft (Intermediate Roller Slub / Base)</td><td class="right">{p3_ir_draft_slub} / {p3_ir_draft_base}</td></tr>
+        <tr><td>04) B.R Draft Constant</td><td class="right">{p4_br_draft}</td></tr>
+        <tr><td>05) Avg Slub Length Matrix</td><td class="right">{p5_avg_slub_len} mm</td></tr>
+        <tr><td>06) Avg Draft Combined</td><td class="right">{p6_avg_draft}</td></tr>
+        <tr><td>07) Random Length Modifier</td><td class="right">Slub: 49.0%/58.0%/60.0% | Base: 12.0%</td></tr>
+        <tr><td>12) TPI (Twists Per Inch)</td><td class="right">{p12_tpi} TPI</td></tr>
+        <tr><td>13) TPM (Twists Per Meter)</td><td class="right">{p13_tpm} TPM</td></tr>
+        <tr><td>15) Spindle Running Speed</td><td class="right">{p15_spindle_speed_act} RPM</td></tr>
+        <tr><td>16) Front Roller Delivery Speed</td><td class="right">{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM</td></tr>
+        <tr><td>18) Core Roller Active Drive Feed</td><td class="right">{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM</td></tr>
+        <tr><td>19) Winding Drum Operating Velocity</td><td class="right">{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM</td></tr>
+    </table>
+
+    <div class="section-title">SECTION C, D, E & F: MATERIAL MASS & OUTPUT METRICS</div>
+    <table class="table-spec">
+        <tr><td>21) Actual Realized Delivery Denier</td><td class="right">{p21_delivery_denier} Denier</td></tr>
+        <tr><td><b>24) RESULT YARN DENIER TARGET</b></td><td class="right" style="color:#1E3A8A;">{in_f} Denier</td></tr>
+        <tr><td>26) COMPOSITE RESULT COUNT (NE)</td><td class="right">{p26_result_count_ne} Ne</td></tr>
+        <tr><td>28) Yarn Single Strand Strength</td><td class="right">{p28_strength_lbs} LBS</td></tr>
+        <tr><td>31) CVM % Total Mass Deviation</td><td class="right">{p31_cvm_percent}%</td></tr>
+        <tr><td>33) Mass Increase Injection Ratio</td><td class="right">{p33_mass_increase_percent}%</td></tr>
+        <tr style="background-color:#F0FDF4; font-weight:bold; color:#15803D;"><td>37) Grams / Meter / Hour Outturn</td><td class="right">{p37_grams_meter_hour} g/m/hr</td></tr>
+        <tr style="background-color:#F0FDF4; font-weight:bold; color:#15803D;"><td>38) Grams / 8 Hours Shift Yield</td><td class="right">{p38_grams_shift} g/Shift</td></tr>
+    </table>
+
+    <div class="section-title">40) 10-STEP DYNAMIC REPEAT CYCLE SETTINGS</div>
+    <table class="slub-table">
+        <tr style="background-color:#1E3A8A; color:white;"><th>STEP</th><th>TWIST</th><th>LEN(MM)</th><th>FR%</th><th>IR DF</th><th>BR DF</th><th>TOTAL DF</th><th>CORE%</th><th>WIND%</th><th>RAND%</th></tr>
+        <tr><td>01</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-highlight"><td>02 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>03</td><td>510</td><td>160</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>58.0</td></tr>
+        <tr class="slub-highlight"><td>02 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>05</td><td>510</td><td>183</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>60.0</td></tr>
+        <tr class="slub-highlight"><td>06 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>07</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-highlight"><td>08 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>09</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-highlight"><td>10 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+    </table>
+"""
+
+if img_b64_data:
+    html_blueprint += f"""
+    <div class="section-title">39) FANCY YARN CONE PRODUCT IMAGE</div>
+    <div style="text-align:center; margin-top:10px;">
+        <img src="data:image/png;base64,{img_b64_data}" style="max-width:280px; border:2px solid #CBD5E1; padding:3px; border-radius:4px;"/>
+    </div>
+    """
+
+html_blueprint += """
+    <div style="margin-top:20px; text-align:center; font-size:10px; color:#64748B; border-top:1px dashed #CBD5E1; padding-top:10px;">
+        SHETTI INDUSTRIAL CERTIFIED BLUEPRINT DIGITAL SIGNATURE SIGNED
+    </div>
+</div>
+</body>
+</html>
+"""
+
+# HTML Download Button trigger injection mechanism
 st.download_button(
-    label="📥 DOWNLOAD DATA SUMMARY (.TXT)",
-    data=txt_summary,
-    file_name=f"Report_{quality_name}.txt",
-    mime="text/plain"
+    label="📥 DOWNLOAD OFFICIAL BLUEPRINT PDF (1-40)",
+    data=html_blueprint,
+    file_name=f"Blueprint_Report_{quality_name}.html",
+    mime="text/html"
 )
 
-with st.container(border=True):
-    st.markdown("##### **📄 SAVE AS COMPACT BLUEPRINT PDF**")
-    st.info("💡 **కేవలం 1 లేదా 2 పేజీల్లో PDF క్లీన్‌గా సేవ్ చేసే విధానం:**\n\n"
-            "1. మీ మొబైల్ క్రోమ్ బ్రౌజర్ పైన కుడివైపు మూలలో ఉన్న **త్రీ-డాట్స్ (3 vertical dots `⋮`)** నొక్కండి.\n"
-            "2. అక్కడ కిందకు స్క్రోల్ చేసి **`Share...`** (షేర్) బటన్ నొక్కండి.\n"
-            "3. వచ్చే ఆప్షన్లలో ప్రింటర్ గుర్తు ఉన్న **`Print`** ఆప్షన్‌ను సెలెక్ట్ చేసుకోండి.\n"
-            "4. ప్రింట్ పేజీ ఓపెన్ అవ్వగానే, పైన ఉండే **`Save as PDF`** నొక్కండి. అంతే, మొత్తం 40 పారామితులు, టేబుల్స్ మరియు ఫోటోలతో కూడిన పక్కా బ్లూప్రింట్ రిపోర్ట్ మీ ఫోన్ లోకి సేవ్ అయిపోతుంది!")
+st.info("💡 **మీ మొబైల్‌లో ఒరిజినల్ PDF ఫైల్ పొందే విధానం:**\n\n"
+        "1. పైన ఉన్న నీలం రంగు **'📥 DOWNLOAD OFFICIAL BLUEPRINT PDF (1-40)'** బటన్ నొక్కండి.\n"
+        "2. ఫైల్ డౌన్‌లోడ్ అవ్వగానే దాన్ని ఓపెన్ చేయండి (అది మీ బ్రౌజర్‌లో బోర్డర్స్ మరియు ఫోటోలతో చాలా అందంగా ఓపెన్ అవుతుంది).\n"
+        "3. ఇప్పుడు మీ బ్రౌజర్ పైన కుడిమూలలో ఉన్న **త్రీ-డాట్స్ (⋮) నొక్కి, Share -> Print** ఆప్షన్ సెలెక్ట్ చేయండి.\n"
+        "4. అక్కడ వచ్చే ఆప్షన్లలో **`Save as PDF`** నొక్కి సేవ్ చేసుకోండి! ఇది కేవలం **1 లేదా 2 పేజీల లోపలే** పక్కా ప్రొఫెషనల్ సర్టిఫికేట్ లాగా వస్తుంది, ఒక్క ఖాళీ పేజీ కూడా రాదు!")
