@@ -1,5 +1,4 @@
 import streamlit as st
-import base64
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -96,12 +95,12 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 SCREEN DISPLAY PERFORMANCE LEDGER (1-40)
+# 📤 BLUEPRINT OUTPUT LEDGER (1-40)
 # ==========================================
 st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📜 OFFICIAL BATCH BLUEPRINT REPORT</h3>", unsafe_allow_html=True)
 
 with st.container(border=True):
-    st.markdown(f"### **SHETTI TECHNICAL PLATFORM**")
+    st.markdown("### **SHETTI TECHNICAL PLATFORM**")
     st.write(f"**QUALITY LOT NAME:** {quality_name} | **MACHINE ALLOCATION:** {machine_no}")
     st.write(f"Roving Hank: {in_a} | Base 1: {in_c} Den | Base 2: {in_d} Den | Cover: {in_e} Den | Target: {in_f} Den")
     st.markdown("---")
@@ -113,59 +112,4 @@ with st.container(border=True):
         {"Parameter No & Specification Name": "03) I.R Draft (Intermediate Roller Slub / Base)", "Output Value": f"{p3_ir_draft_slub} / {p3_ir_draft_base}"},
         {"Parameter No & Specification Name": "04) B.R Draft (Back Roller Constant)", "Output Value": str(p4_br_draft)},
         {"Parameter No & Specification Name": "05) Avg Slub Length Matrix", "Output Value": f"{p5_avg_slub_len} mm"},
-        {"Parameter No & Specification Name": "06) Avg Draft Combined", "Output Value": str(p6_avg_draft)},
-        {"Parameter No & Specification Name": "07) Random Length Modifier", "Output Value": "Slub: 49.0%/58.0%/60.0% | Base: 12.0%"},
-        {"Parameter No & Specification Name": "08) Core Tension Percentage", "Output Value": "-1.00% underfeed"},
-        {"Parameter No & Specification Name": "09) F.R Overfeed Modifier", "Output Value": "-3.00% standard"},
-        {"Parameter No & Specification Name": "10) Slub Length Sequence Profiles", "Output Value": "180mm / 160mm / 183mm"},
-        {"Parameter No & Specification Name": "11) Slub-to-Slub Space Nodes", "Output Value": "85 mm constant"},
-        {"Parameter No & Specification Name": "12) TPI (Twists Per Inch)", "Output Value": f"{p12_tpi} TPI"},
-        {"Parameter No & Specification Name": "13) TPM (Twists Per Meter)", "Output Value": f"{p13_tpm} TPM"},
-        {"Parameter No & Specification Name": "14) FRS MPM Delivery Velocity", "Output Value": f"{p14_frs_mpm} MPM"},
-        {"Parameter No & Specification Name": "15) Spindle Running Speed", "Output Value": f"{p15_spindle_speed_act} RPM"},
-        {"Parameter No & Specification Name": "16) Front Roller Speed", "Output Value": f"{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM"},
-        {"Parameter No & Specification Name": "17) Winding Tube Overfeed Target", "Output Value": "8.00% compact tension"},
-        {"Parameter No & Specification Name": "18) Core Roller Active Drive Feed", "Output Value": f"{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM"},
-        {"Parameter No & Specification Name": "19) Winding Drum Operating Velocity", "Output Value": f"{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM"}
-    ]
-    st.table(sec_ab_data)
-    
-    st.markdown("#### **🔹 SECTION C & D: MATERIAL MASS ANALYSIS**")
-    sec_cd_data = [
-        {"Parameter No & Specification Name": "20) Twist Contraction Factor", "Output Value": "1.85% linear contraction"},
-        {"Parameter No & Specification Name": "21) Actual Realized Delivery Denier", "Output Value": f"{p21_delivery_denier} Denier"},
-        {"Parameter No & Specification Name": "22) Mechanical K Factor Constant", "Output Value": "0.9547 active"},
-        {"Parameter No & Specification Name": "23) Estimated Waste Threshold", "Output Value": "0.00% waste | +0.16% moisture gain"},
-        {"Parameter No & Specification Name": "24) RESULT YARN DENIER TARGET", "Output Value": f"{in_f} Denier"},
-        {"Parameter No & Specification Name": "25) CSP Upper Boundary Standard", "Output Value": "1962 premium limit"},
-        {"Parameter No & Specification Name": "26) Composite Result Count (Ne)", "Output Value": f"{p26_result_count_ne} Ne"},
-        {"Parameter No & Specification Name": "27) Count CV% Bobbin Variance", "Output Value": "2.6% structural consistency"},
-        {"Parameter No & Specification Name": "28) Yarn Single Strand Strength", "Output Value": f"{p28_strength_lbs} LBS"},
-        {"Parameter No & Specification Name": "29) Strength CV% Margin Limit", "Output Value": "5.2% loops check"},
-        {"Parameter No & Specification Name": "30) Laboratory Quality Status", "Output Value": "Lab Connected" if uster_file_h else "Auto-Calculated"}
-    ]
-    st.table(sec_cd_data)
-    
-    st.markdown("#### **🔹 SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS**")
-    sec_ef_data = [
-        {"Parameter No & Specification Name": "31) CVM % Total Mass Deviation", "Output Value": f"{p31_cvm_percent}%"},
-        {"Parameter No & Specification Name": "32) Calculated Slubs Per Meter Rate", "Output Value": "3.00 slubs/m"},
-        {"Parameter No & Specification Name": "33) Mass Increase Injection Ratio", "Output Value": f"{p33_mass_increase_percent}%"},
-        {"Parameter No & Specification Name": "34) Avg Slub Physical Length (cm)", "Output Value": f"{p34_avg_slub_len_cm} cm"},
-        {"Parameter No & Specification Name": "35) Avg Slub Spatial Distance (cm)", "Output Value": f"{p35_avg_slub_dist_cm} cm"},
-        {"Parameter No & Specification Name": "36) Visual Bobbin Package Check", "Output Value": "Verified Cheese Build active"},
-        {"Parameter No & Specification Name": "37) Grams / Meter / Hour Outturn", "Output Value": f"{p37_grams_meter_hour} g/m/hr"},
-        {"Parameter No & Specification Name": "38) Grams / 8 Hours Shift Yield", "Output Value": f"{p38_grams_shift} g / Shift"},
-        {"Parameter No & Specification Name": "39) Fancy Yarn Cone Status", "Output Value": "Cone Attached & Logged" if fancy_bobbin_i else "Awaiting Cone Photo"}
-    ]
-    st.table(sec_ef_data)
-
-    st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
-    step_data = [
-        {"STEP": "01", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "02 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 58.0},
-        {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 60.0},
-        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%":
-    
+        {"Parameter No &
