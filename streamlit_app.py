@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import math
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -153,10 +152,10 @@ html_markup = f"""
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px; background-color: #F8FAFC;"><span style="font-weight: bold; color: #64748B; width: 25px;">27</span><span style="text-align: left; flex-grow: 1;">27) Count CV% Bobbin Variance</span><span style="font-weight: bold; color: #1E3A8A;">2.6% structural consistency</span></div>
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px;"><span style="font-weight: bold; color: #64748B; width: 25px;">28</span><span style="text-align: left; flex-grow: 1;">28) Yarn Single Strand Strength</span><span style="font-weight: bold; color: #1E3A8A;">{p28_strength_lbs} LBS</span></div>
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px; background-color: #F8FAFC;"><span style="font-weight: bold; color: #64748B; width: 25px;">29</span><span style="text-align: left; flex-grow: 1;">29) Strength CV% Margin Limit</span><span style="font-weight: bold; color: #1E3A8A;">5.2% loops check</span></div>
-    <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px;"><span style="font-weight: bold; color: #64748B; width: 25px;">30</span><span style="text-align: left; flex-grow: 1;">30) LABORATORY QUALITY STATUS (H)</span><span style="font-weight: bold; color: #1E3A8A;">{"Lab Sheet Attached (H)" if uster_file_h else "Awaiting Lab Upload"}</span></div>
+    <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px;"><span style="font-weight: bold; color: #64748B; width: 25px;">30</span><span style="text-align: left; flex-grow: 1;">30) LABORATORY QUALITY STATUS (H)</span><span style="font-weight: bold; color: #1E3A8A;">{"Lab Sheet Attached" if uster_file_h else "Awaiting Lab Upload"}</span></div>
     
     <div style="background-color: #1E3A8A; color: white; padding: 6px 10px; font-size: 12px; font-weight: bold; border-radius: 3px; margin-top: 12px; margin-bottom: 4px; text-transform: uppercase;">SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px;"><span style="font-weight: bold; color: #64748B; width: 25px;">31</span><span style="text-align: left; flex-grow: 1;">31) CVM % TOTAL MASS DEVIATION</span><span style="font-weight: bold; color: #1E3A8A;">{p31_cvm_percent}%</span></div>
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px; background-color: #F8FAFC;"><span style="font-weight: bold; color: #64748B; width: 25px;">32</span><span style="text-align: left; flex-grow: 1;">32) Calculated Slubs Per Meter Rate</span><span style="font-weight: bold; color: #1E3A8A;">3.00 slubs/m</span></div>
     <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8F0; font-size: 12.5px;"><span style="font-weight: bold; color: #64748B; width: 25px;">33</span><span style="text-align: left; flex-grow: 1;">33) MASS INCREASE INJECTION RATIO</span><span style="font-weight: bold; color: #1E3A8A;">{p33_mass_increase_percent}%</span></div>
-    <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom:
+    <div style="display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #E2E8
