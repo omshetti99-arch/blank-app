@@ -106,49 +106,58 @@ with st.container(border=True):
     st.markdown("---")
     
     st.markdown("#### **🔹 SECTION A & B: DRAFTING SPEED CONSTANTS**")
-    st.write(f"**01) Total Draft:** {p1_total_draft}")
-    st.write(f"**02) Main Draft:** {p2_main_draft}")
-    st.write(f"**03) I.R Draft (Intermediate Roller Slub / Base):** {p3_ir_draft_slub} / {p3_ir_draft_base}")
-    st.write(f"**04) B.R Draft (Back Roller Constant):** {p4_br_draft}")
-    st.write(f"**05) Avg Slub Length Matrix:** {p5_avg_slub_len} mm")
-    st.write(f"**06) Avg Draft Combined:** {p6_avg_draft}")
-    st.write(f"**07) Random Length Modifier:** Slub: 49.0%/58.0%/60.0% | Base: 12.0%")
-    st.write(f"**08) Core Tension Percentage:** -1.00% underfeed")
-    st.write(f"**09) F.R Overfeed Modifier:** -3.00% standard")
-    st.write(f"**10) Slub Length Sequence Profiles:** 180mm / 160mm / 183mm")
-    st.write(f"**11) Slub-to-Slub Space Nodes:** 85 mm constant")
-    st.write(f"**12) TPI (Twists Per Inch):** {p12_tpi} TPI")
-    st.write(f"**13) TPM (Twists Per Meter):** {p13_tpm} TPM")
-    st.write(f"**14) FRS MPM Delivery Velocity:** {p14_frs_mpm} MPM")
-    st.write(f"**15) Spindle Running Speed:** {p15_spindle_speed_act} RPM")
-    st.write(f"**16) Front Roller Speed:** {p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM")
-    st.write(f"**17) Winding Tube Overfeed Target:** 8.00% compact tension")
-    st.write(f"**18) Core Roller Active Drive Feed:** {p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM")
-    st.write(f"**19) Winding Drum Operating Velocity:** {p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM")
+    sec_ab_data = [
+        {"Parameter No & Specification Name": "01) Total Draft", "Output Value": str(p1_total_draft)},
+        {"Parameter No & Specification Name": "02) Main Draft", "Output Value": str(p2_main_draft)},
+        {"Parameter No & Specification Name": "03) I.R Draft (Intermediate Roller Slub / Base)", "Output Value": f"{p3_ir_draft_slub} / {p3_ir_draft_base}"},
+        {"Parameter No & Specification Name": "04) B.R Draft (Back Roller Constant)", "Output Value": str(p4_br_draft)},
+        {"Parameter No & Specification Name": "05) Avg Slub Length Matrix", "Output Value": f"{p5_avg_slub_len} mm"},
+        {"Parameter No & Specification Name": "06) Avg Draft Combined", "Output Value": str(p6_avg_draft)},
+        {"Parameter No & Specification Name": "07) Random Length Modifier", "Output Value": "Slub: 49.0%/58.0%/60.0% | Base: 12.0%"},
+        {"Parameter No & Specification Name": "08) Core Tension Percentage", "Output Value": "-1.00% underfeed"},
+        {"Parameter No & Specification Name": "09) F.R Overfeed Modifier", "Output Value": "-3.00% standard"},
+        {"Parameter No & Specification Name": "10) Slub Length Sequence Profiles", "Output Value": "180mm / 160mm / 183mm"},
+        {"Parameter No & Specification Name": "11) Slub-to-Slub Space Nodes", "Output Value": "85 mm constant"},
+        {"Parameter No & Specification Name": "12) TPI (Twists Per Inch)", "Output Value": f"{p12_tpi} TPI"},
+        {"Parameter No & Specification Name": "13) TPM (Twists Per Meter)", "Output Value": f"{p13_tpm} TPM"},
+        {"Parameter No & Specification Name": "14) FRS MPM Delivery Velocity", "Output Value": f"{p14_frs_mpm} MPM"},
+        {"Parameter No & Specification Name": "15) Spindle Running Speed", "Output Value": f"{p15_spindle_speed_act} RPM"},
+        {"Parameter No & Specification Name": "16) Front Roller Speed", "Output Value": f"{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM"},
+        {"Parameter No & Specification Name": "17) Winding Tube Overfeed Target", "Output Value": "8.00% compact tension"},
+        {"Parameter No & Specification Name": "18) Core Roller Active Drive Feed", "Output Value": f"{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM"},
+        {"Parameter No & Specification Name": "19) Winding Drum Operating Velocity", "Output Value": f"{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM"}
+    ]
+    st.table(sec_ab_data)
     
     st.markdown("#### **🔹 SECTION C & D: MATERIAL MASS ANALYSIS**")
-    st.write(f"**20) Twist Contraction Factor:** 1.85% linear contraction")
-    st.write(f"**21) Actual Realized Delivery Denier:** {p21_delivery_denier} Denier")
-    st.write(f"**22) Mechanical K Factor Constant:** 0.9547 active")
-    st.write(f"**23) Estimated Waste Threshold:** 0.00% waste | +0.16% moisture gain")
-    st.write(f"**24) RESULT YARN DENIER TARGET:** {in_f} Denier")
-    st.write(f"**25) CSP Upper Boundary Standard:** 1962 premium limit")
-    st.write(f"**26) Composite Result Count (Ne):** {p26_result_count_ne} Ne")
-    st.write(f"**27) Count CV% Bobbin Variance:** 2.6% structural consistency")
-    st.write(f"**28) Yarn Single Strand Strength:** {p28_strength_lbs} LBS")
-    st.write(f"**29) Strength CV% Margin Limit:** 5.2% loops check")
-    st.write(f"**30) Laboratory Quality Status:** {'Lab Connected' if uster_file_h else 'Auto-Calculated'}")
+    sec_cd_data = [
+        {"Parameter No & Specification Name": "20) Twist Contraction Factor", "Output Value": "1.85% linear contraction"},
+        {"Parameter No & Specification Name": "21) Actual Realized Delivery Denier", "Output Value": f"{p21_delivery_denier} Denier"},
+        {"Parameter No & Specification Name": "22) Mechanical K Factor Constant", "Output Value": "0.9547 active"},
+        {"Parameter No & Specification Name": "23) Estimated Waste Threshold", "Output Value": "0.00% waste | +0.16% moisture gain"},
+        {"Parameter No & Specification Name": "24) RESULT YARN DENIER TARGET", "Output Value": f"{in_f} Denier"},
+        {"Parameter No & Specification Name": "25) CSP Upper Boundary Standard", "Output Value": "1962 premium limit"},
+        {"Parameter No & Specification Name": "26) Composite Result Count (Ne)", "Output Value": f"{p26_result_count_ne} Ne"},
+        {"Parameter No & Specification Name": "27) Count CV% Bobbin Variance", "Output Value": "2.6% structural consistency"},
+        {"Parameter No & Specification Name": "28) Yarn Single Strand Strength", "Output Value": f"{p28_strength_lbs} LBS"},
+        {"Parameter No & Specification Name": "29) Strength CV% Margin Limit", "Output Value": "5.2% loops check"},
+        {"Parameter No & Specification Name": "30) Laboratory Quality Status", "Output Value": "Lab Connected" if uster_file_h else "Auto-Calculated"}
+    ]
+    st.table(sec_cd_data)
     
     st.markdown("#### **🔹 SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS**")
-    st.write(f"**31) CVM % Total Mass Deviation:** {p31_cvm_percent}%")
-    st.write(f"**32) Calculated Slubs Per Meter Rate:** 3.00 slubs/m")
-    st.write(f"**33) Mass Increase Injection Ratio:** {p33_mass_increase_percent}%")
-    st.write(f"**34) Avg Slub Physical Length (cm):** {p34_avg_slub_len_cm} cm")
-    st.write(f"**35) Avg Slub Spatial Distance (cm):** {p35_avg_slub_dist_cm} cm")
-    st.write(f"**36) Visual Bobbin Package Check:** Verified Cheese Build active")
-    st.info(f"💡 **37) GRAMS / METER / HOUR OUTTURN:** {p37_grams_meter_hour} g/m/hr")
-    st.info(f"💡 **38) GRAMS / 8 HOURS SHIFT YIELD:** {p38_grams_shift} g / Shift")
-    st.write(f"**39) Fancy Yarn Cone Status:** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
+    sec_ef_data = [
+        {"Parameter No & Specification Name": "31) CVM % Total Mass Deviation", "Output Value": f"{p31_cvm_percent}%"},
+        {"Parameter No & Specification Name": "32) Calculated Slubs Per Meter Rate", "Output Value": "3.00 slubs/m"},
+        {"Parameter No & Specification Name": "33) Mass Increase Injection Ratio", "Output Value": f"{p33_mass_increase_percent}%"},
+        {"Parameter No & Specification Name": "34) Avg Slub Physical Length (cm)", "Output Value": f"{p34_avg_slub_len_cm} cm"},
+        {"Parameter No & Specification Name": "35) Avg Slub Spatial Distance (cm)", "Output Value": f"{p35_avg_slub_dist_cm} cm"},
+        {"Parameter No & Specification Name": "36) Visual Bobbin Package Check", "Output Value": "Verified Cheese Build active"},
+        {"Parameter No & Specification Name": "37) Grams / Meter / Hour Outturn", "Output Value": f"{p37_grams_meter_hour} g/m/hr"},
+        {"Parameter No & Specification Name": "38) Grams / 8 Hours Shift Yield", "Output Value": f"{p38_grams_shift} g / Shift"},
+        {"Parameter No & Specification Name": "39) Fancy Yarn Cone Status", "Output Value": "Cone Attached & Logged" if fancy_bobbin_i else "Awaiting Cone Photo"}
+    ]
+    st.table(sec_ef_data)
 
     st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
     step_data = [
@@ -157,37 +166,4 @@ with st.container(border=True):
         {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 58.0},
         {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
         {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 60.0},
-        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "07", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "08 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "09", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "10 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0}
-    ]
-    st.table(step_data)
-
-    if fancy_bobbin_i:
-        st.markdown("#### **📸 ATTACHED PRODUCT MEDIA CONE IMAGE**")
-        st.image(fancy_bobbin_i, width=300)
-
-# Build Unbreakable Safe Plain Output Text Report
-raw_report_text = f"SHETTI APP PRODUCTION REPORT\\nQUALITY NAME: {quality_name} | MACHINE NO: {machine_no}\\n"
-raw_report_text += f"01) Total Draft: {p1_total_draft}\\n02) Main Draft: {p2_main_draft}\\n"
-raw_report_text += f"12) TPI: {p12_tpi} | 13) TPM: {p13_tpm}\\n15) Spindle Running Speed: {p15_spindle_speed_act} RPM\\n"
-raw_report_text += f"24) RESULT DENIER TARGET: {in_f} Denier\\n26) Composite Result Count: {p26_result_count_ne} Ne\\n"
-raw_report_text += f"37) Outturn: {p37_grams_meter_hour} g/m/hr | 38) Shift Yield: {p38_grams_shift} g/Shift\\n"
-
-st.markdown("---")
-st.download_button(
-    label="📥 DOWNLOAD BATCH DATA REPORT (.TXT FILE)",
-    data=raw_report_text,
-    file_name=f"Report_{quality_name}.txt",
-    mime="text/plain"
-)
-
-with st.container(border=True):
-    st.markdown("##### **📄 GENERATE OFFICIAL BATCH BLUEPRINT PDF**")
-    st.info("💡 **మొబైల్‌లో నేరుగా బ్లూప్రింట్ PDF సేవ్ చేసే విధానం:**\n\n"
-            "1. మీ మొబైల్ క్రోమ్ బ్రౌజర్ పైన కుడివైపు మూలలో ఉన్న **త్రీ-డాట్స్ (3 vertical dots `⋮`)** నొక్కండి.\n"
-            "2. అక్కడ కిందకు స్క్రోల్ చేసి **`Share...`** (షేర్) బటన్ నొక్కండి.\n"
-            "3. వచ్చే ఆప్షన్లలో ప్రింటర్ గుర్తు ఉన్న **`Print`** ఆప్షన్‌ను సెలెక్ట్ చేసుకోండి.\n"
-            "4. ప్రింట్ పేజీ ఓపెన్ అవ్వగానే, పైన ఉండే **`Save as PDF`** లేదా ఆకుపచ్చ **`PDF 📥`** డౌన్‌లోడ్ బటన్ నొక్కండి. అంతే, మొత్తం 1 నుండి 40 పారామితులు, టేబుల్స్ మరియు ఫోటోలతో కూడిన పక్కా బ్లూప్రింట్ రిపోర్ట్ మీ ఫోన్ లోకి సేవ్ అయిపోతుంది!")
+        {"STEP": "06 (Slub)", "TWIST": 510,
