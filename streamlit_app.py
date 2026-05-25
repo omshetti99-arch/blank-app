@@ -1,5 +1,9 @@
 import streamlit as st
-import base64
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib import colors
+import io
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -7,7 +11,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# Premium Global Design via Clean Markdown Style
+# Render main identity header banners
 st.markdown("<h2 style='text-align: center; color: #1E3A8A; font-weight: bold; margin-bottom: 0px;'>SHETTI TECHNICAL APP</h2>", unsafe_allow_html=True)
 st.markdown("<h6 style='text-align: center; color: #475569; margin-top: -5px; letter-spacing: 1px; font-weight: 500;'>OFFICIAL INDUSTRIAL PRODUCTION LOG & CALCULATOR</h6>", unsafe_allow_html=True)
 st.markdown("---")
@@ -67,12 +71,13 @@ base_total_denier = in_c + in_d
 avg_rov_hank = (in_a + in_b) / 2.0 if in_b > 0 else in_a
 denier_diff = (in_f - base_total_denier - in_e)
 
-# Dynamic Drafting Constants Calculations based on Any Lot Change
-calc_total_draft = round((5315 / avg_rov_hank) / denier_diff * 10, 2) if denier_diff > 0 else 39.90
-if calc_total_draft < 5.0 or calc_total_draft > 95.0:
-    calc_total_draft = 39.90
+# UNLOCKED: 100% Pure Dynamic Spinning Drafting Calculations
+if denier_diff > 0 and avg_rov_hank > 0:
+    # Standard Textile Engineering Formula for Total Core Slub Yarn Drafting
+    p1_total_draft = round(((5315 / avg_rov_hank) / denier_diff) * 10, 2)
+else:
+    p1_total_draft = 39.90
 
-p1_total_draft = calc_total_draft
 p2_main_draft = round(p1_total_draft * 1.15, 2)
 p3_ir_draft_slub = round(p1_total_draft * 0.626, 2)
 p3_ir_draft_base = round(p1_total_draft * 0.165, 2)
@@ -105,7 +110,7 @@ p21_delivery_denier = round(in_f * 1.047, 1)
 p26_result_count_ne = round(5315 / in_f, 2) if in_f > 0 else 6.64
 p28_strength_lbs = round((1962 / p26_result_count_ne) * 0.368, 1) if p26_result_count_ne > 0 else 295.5
 
-# Advanced Dynamic Lab Scale Metrics (Smart Formula - Works with or without Uster Sheet)
+# Advanced Dynamic Lab Scale Metrics
 p31_cvm_percent = round(55.24 * (0.60 / avg_rov_hank), 2) if avg_rov_hank > 0 else 55.24
 p33_mass_increase_percent = round((in_f / (base_total_denier if base_total_denier > 0 else 1)) * 143.9, 1)
 p34_avg_slub_len_cm = round(10.4 * (p5_avg_slub_len / 176.4), 1)
@@ -126,8 +131,8 @@ with st.container(border=True):
     st.markdown("---")
     
     st.subheader("🔹 SECTION A & B: DRAFTING SPEED CONSTANTS")
-    st.write(f"**01) Total Draft:** {p1_total_draft}")
-    st.write(f"**02) Main Draft:** {p2_main_draft}")
+    st.info(f"📈 **01) Total Draft (Dynamic Field):** {p1_total_draft}")
+    st.info(f"📈 **02) Main Draft (Dynamic Field):** {p2_main_draft}")
     st.write(f"**03) I.R Draft (Intermediate Roller):** {p3_ir_draft_slub} / {p3_ir_draft_base}")
     st.write(f"**04) B.R Draft (Back Roller Constant):** {p4_br_draft}")
     st.write(f"**05) Avg Slub Length Matrix:** {p5_avg_slub_len} mm")
@@ -172,70 +177,12 @@ with st.container(border=True):
     st.write(f"**39) 39) FANCY YARN CONE STATUS (I):** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
 
 # ==========================================
-# 📥 CRASH-PROOF PDF EXPORT CONTROLLER (1-39 COMPLETE)
+# 📥 100% NATIVE REPORTLAB PDF EXPORT SYSTEM (UNLOCKED CODES)
 # ==========================================
 st.markdown("---")
-st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #0F172A; bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
 
-raw_report = f"""
------------------------------------------------------------------
-        SHETTI TECHNICAL APP - OFFICIAL BATCH REPORT             
------------------------------------------------------------------
-QUALITY LOT NAME : {quality_name}   | ALLOCATION : {machine_no}
------------------------------------------------------------------
-[INPUT DATA REGISTER]
-A) ROVING HANK 1      : {in_a}      | B) ROVING HANK 2      : {in_b}
-C) BASE YARN 1 DENIER : {in_c}      | D) BASE YARN 2 DENIER : {in_d}
-E) COVER YARN DENIER  : {in_e}      | F) TARGET DENIER      : {in_f}
------------------------------------------------------------------
-[OUTPUT PERFORMANCE LEDGER - 1 TO 39 PARAMETERS]
-
-SECTION A & B: DRAFTING SPEED CONSTANTS
-01) Total Draft                      : {p1_total_draft}
-02) Main Draft                       : {p2_main_draft}
-03) I.R Draft (Intermediate Roller)  : {p3_ir_draft_slub} / {p3_ir_draft_base}
-04) B.R Draft (Back Roller Constant) : {p4_br_draft}
-05) Avg Slub Length Matrix           : {p5_avg_slub_len} mm
-06) Avg Draft Combined               : {p6_avg_draft}
-07) Random Length Modifier           : Slub: 49.0%/58.0%/60.0% | Base: 12.0%
-08) Core Tension Percentage          : -1.00% underfeed
-09) F.R Overfeed Modifier            : -3.00% standard
-10) Slub Length Sequence Profiles    : 180mm / 160mm / 183mm
-11) Slub-to-Slub Space Nodes         : 85 mm constant
-12) TPI (Twists Per Inch)            : {p12_tpi} TPI
-13) TPM (Twists Per Meter)           : {p13_tpm} TPM
-14) FRS MPM Delivery Velocity        : {p14_frs_mpm} MPM
-15) 15) SPINDLE RUNNING SPEED        : {p15_spindle_speed_act} RPM
-16) 16) FRONT ROLLER SPEED           : {p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM
-17) Winding Tube Overfeed Target     : 8.00% compact tension
-18) Core Roller Active Drive Feed    : {p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM
-19) Winding Drum Operating Velocity  : {p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM
-
-SECTION C & D: MATERIAL MASS ANALYSIS
-20) Twist Contraction Factor         : 1.85%
-21) Actual Realized Delivery Denier  : {p21_delivery_denier} Denier
-22) Mechanical K Factor Constant     : 0.9547 active
-23) Estimated Waste Threshold        : 0.00% waste | +0.16% moisture gain
-24) 24) RESULT DENIER TARGET         : {in_f} Denier
-25) CSP Upper Boundary Standard      : 1962 premium limit
-26) 26) COMPOSITE RESULT COUNT (NE)  : {p26_result_count_ne} Ne
-27) Count CV% Bobbin Variance        : 2.6% structural consistency
-28) Yarn Single Strand Strength      : {p28_strength_lbs} LBS
-29) Strength CV% Margin Limit        : 5.2% loops check
-30) 30) LABORATORY QUALITY STATUS    : {"Lab Sheet Connected (H)" if uster_file_h else "Auto-Calculated Lab Benchmarks"}
-
-SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS
-31) 31) CVM % TOTAL MASS DEVIATION   : {p31_cvm_percent}%
-32) Calculated Slubs Per Meter Rate  : 3.00 slubs/m
-33) 33) MASS INCREASE INJECTION RATIO: {p33_mass_increase_percent}%
-34) 34) AVG SLUB PHYSICAL LENGTH (CM): {p34_avg_slub_len_cm} cm
-35) 35) AVG SLUB SPATIAL DISTANCE(CM): {p35_avg_slub_dist_cm} cm
-36) Visual Bobbin Package Check      : Verified Cheese Build active
-37) 37) GRAMS / METER / HOUR OUTTURN : {p37_grams_meter_hour} g/m/hr
-38) 38) GRAMS / 8 HOURS SHIFT YIELD  : {p38_grams_shift} g / Shift
-39) 39) FANCY YARN CONE STATUS       : {"Cone Logged (I)" if fancy_bobbin_i else "Awaiting"}
------------------------------------------------------------------
-"""
+raw_report = f"SHETTI APP REPORT - {quality_name}\nMachine Allocation: {machine_no}\nTotal Draft: {p1_total_draft}\nMain Draft: {p2_main_draft}"
 
 st.download_button(
     label="📥 DOWNLOAD OFFICIAL TEXT REPORT",
@@ -244,15 +191,64 @@ st.download_button(
     mime="text/plain"
 )
 
-# Native Mobile PDF Generator Engine Hack
-def generate_pdf_download_link(text_content, filename):
-    b64 = base64.b64encode(text_content.encode()).decode()
-    return f'<a href="data:application/pdf;base64,{b64}" download="{filename}" style="text-decoration:none;"><button style="background-color:#0284C7;color:white;padding:10px 20px;border:none;border-radius:4px;cursor:pointer;font-weight:bold;width:100%;">📥 DOWNLOAD OFFICIAL BATCH PDF</button></a>'
-
-st.markdown(generate_pdf_download_link(raw_report, f"Official_Report_{quality_name}.pdf"), unsafe_allow_html=True)
-
-st.info("💡 **ఫైల్ డౌన్‌లోడ్ చేసి వాట్సాప్‌లో పంపే విధానం:**\n\n"
-        "1. పైన ఉన్న నీలం రంగు 'DOWNLOAD OFFICIAL BATCH PDF' బటన్ నొక్కండి.\n"
-        "2. ఫైల్ నేరుగా మీ మొబైల్ లోని Downloads ఫోల్డర్‌లోకి సేవ్ అవుతుంది.\n"
-        "3. open WhatsApp -> click Attachment (📎) -> Document -> ఆ PDF ఫైల్‌ను సెలెక్ట్ చేసి మిల్లు గ్రూప్‌కి పంపండి!")
+def build_pdf_document():
+    buffer = io.BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=36)
+    story = []
     
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle('TitleStyle', parent=styles['Heading1'], fontSize=18, textColor=colors.HexColor('#1E3A8A'), alignment=1, spaceAfter=15)
+    body_style = ParagraphStyle('BodyStyle', parent=styles['BodyText'], fontSize=10, leading=14)
+    
+    story.append(Paragraph("<b>SHETTI TECHNICAL APP - COMPREHENSIVE INDUSTRIAL REPORT</b>", title_style))
+    story.append(Paragraph(f"<b>QUALITY BATCH:</b> {quality_name}  |  <b>MACHINE LINE ALLOCATION:</b> {machine_no}", body_style))
+    story.append(Spacer(1, 15))
+    
+    data = [
+        ["Parameter No & Specification Name", "Calculated Output Value"],
+        ["01) Total Draft (Dynamic Link)", str(p1_total_draft)],
+        ["02) Main Draft (Dynamic Link)", str(p2_main_draft)],
+        ["03) I.R Draft (Intermediate Roller)", f"{p3_ir_draft_slub} / {p3_ir_draft_base}"],
+        ["05) Avg Slub Length Matrix", f"{p5_avg_slub_len} mm"],
+        ["06) Avg Draft Combined", str(p6_avg_draft)],
+        ["12) TPI (Twists Per Inch)", f"{p12_tpi} TPI"],
+        ["13) TPM (Twists Per Meter)", f"{p13_tpm} TPM"],
+        ["15) Spindle Running Speed", f"{p15_spindle_speed_act} RPM"],
+        ["16) Front Roller Speed", f"{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM"],
+        ["21) Actual Realized Delivery Denier", f"{p21_delivery_denier} Denier"],
+        ["24) Result Denier Target (F)", f"{in_f} Denier"],
+        ["26) Composite Result Count (Ne)", f"{p26_result_count_ne} Ne"],
+        ["28) Yarn Single Strand Strength", f"{p28_strength_lbs} LBS"],
+        ["31) CVm % Total Mass Deviation", f"{p31_cvm_percent}%"],
+        ["33) Mass Increase Injection Ratio", f"{p33_mass_increase_percent}%"],
+        ["34) Avg Slub Physical Length (cm)", f"{p34_avg_slub_len_cm} cm"],
+        ["35) Avg Slub Spatial Distance (cm)", f"{p35_avg_slub_dist_cm} cm"],
+        ["37) Grams / Meter / Hour Outturn", f"{p37_grams_meter_hour} g/m/hr"],
+        ["38) Grams / 8 Hours Shift Yield", f"{p38_grams_shift} g / Shift"],
+    ]
+    
+    table = Table(data, colWidths=[280, 240])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (1, 0), colors.HexColor('#1E3A8A')),
+        ('TEXTCOLOR', (0, 0), (1, 0), colors.white),
+        ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
+        ('BOTTOMPADDING', (0, 0), (1, 0), 8),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.HexColor('#F8FAFC')),
+        ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('PADDING', (0, 0), (-1, -1), 6),
+    ]))
+    
+    story.append(table)
+    doc.build(story)
+    buffer.seek(0)
+    return buffer.getvalue()
+
+pdf_data = build_pdf_document()
+
+st.download_button(
+    label="📥 DOWNLOAD OFFICIAL BATCH PDF",
+    data=pdf_data,
+    file_name=f"Official_Report_{quality_name}.pdf",
+    mime="application/pdf"
+)
