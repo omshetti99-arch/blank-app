@@ -168,7 +168,7 @@ with st.container(border=True):
     st.write(f"**36) Visual Bobbin Package Check:** Verified Cheese Build active")
     st.info(f"💡 **37) GRAMS / METER / HOUR OUTTURN:** {p37_grams_meter_hour} g/m/hr")
     st.info(f"💡 **38) GRAMS / 8 HOURS SHIFT YIELD:** {p38_grams_shift} g / Shift")
-    st.write(f"**39) FANCY YARN CONE STATUS (I):** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
+    st.write(f"**39) FANCY YARN YIELD STATUS (I):** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
 
     st.markdown("---")
     st.subheader("📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS")
@@ -187,30 +187,24 @@ with st.container(border=True):
     st.dataframe(step_data, use_container_width=True, hide_index=True)
 
 # ==========================================
-# 📥 EXTRACTION & SECURE HTML IMAGE LOADER
+# 📥 SAFEST BINARY IMAGE EXTRACTION ENGINE
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
 
-# Crash-Proof logic to split string construction and bypass f-string triple quote errors
-img_html_tag = ""
+img_b64_string = ""
 if fancy_bobbin_i:
     try:
-        bytes_data = fancy_bobbin_i.getvalue()
-        b64_img = base64.b64encode(bytes_data).decode()
-        # Build image tag without risking unescaped quotes inside f-strings
-        img_html_tag = '<br><div style="text-align:center;"><p style="font-size:12px;font-weight:bold;color:#1E3A8A;">39) FANCY YARN CONE PHOTO ATTACHMENT</p><img src="data:image/png;base64,' + b64_img + '" style="max-width:240px;border:2px solid #CBD5E1;border-radius:4px;padding:4px;"/></div>'
+        img_b64_string = base64.b64encode(fancy_bobbin_i.getvalue()).decode()
     except Exception:
-        img_html_tag = ""
-else:
-    img_html_tag = '<br><p style="color:#64748B;font-size:11px;text-align:center;font-style:italic;">[39] Awaiting Fancy Yarn Cone Photo Upload...</p>'
+        img_b64_string = ""
 
-# WIDE RE-BORDERED BLUEPRINT HTML TEMPLATE
-blueprint_html = """
+# UNBREAKABLE HTML BLUEPRINT TEMPLATE (Bypasses all Python f-string triple quote bugs)
+html_blueprint_layout = """
 <html>
 <head>
 <style>
-    @page { size: letter; margin: 20px; }
+    @page { size: letter; margin: 25px; }
     body { font-family: Arial, sans-serif; padding: 10px; background-color: #ffffff; color: #000; margin: 0; }
     .blueprint-box { border: 3px double #1E3A8A; padding: 25px; border-radius: 8px; max-width: 750px; margin: 0 auto; }
     .header-table { width: 100%; border-bottom: 2px solid #1E3A8A; padding-bottom: 8px; margin-bottom: 15px; }
@@ -220,7 +214,6 @@ blueprint_html = """
     .data-table td { border-bottom: 1px solid #E2E8F0; padding: 6px 10px; font-size: 12px; line-height: 1.4; }
     .section-head { background-color: #E0F2FE; color: #1E3A8A; font-weight: bold; font-size: 12px; padding: 5px 10px; text-transform: uppercase; margin-top: 15px; border-left: 4px solid #1E3A8A; }
     .highlight-row { background-color: #F0FDF4; font-weight: bold; color: #15803D; }
-    
     .slub-table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: center; font-size: 10px; }
     .slub-table th { background-color: #1E3A8A; color: white; padding: 6px; font-weight: bold; }
     .slub-table td { border: 1px solid #E2E8F0; padding: 5px; }
@@ -230,74 +223,24 @@ blueprint_html = """
 <body>
 <div class="blueprint-box">
     <table class="header-table">
-        <tr>
-            <td>
-                <div class="title">SHETTI TECHNICAL PLATFORM</div>
-                <div class="subtitle">OFFICIAL BATCH PRODUCTION BLUEPRINT & LOG REPORT</div>
-            </td>
-        </tr>
+        <tr><td><div class="title">SHETTI TECHNICAL PLATFORM</div><div class="subtitle">OFFICIAL BATCH PRODUCTION BLUEPRINT & LOG REPORT</div></td></tr>
     </table>
     
     <table style="width:100%; font-size:12px; margin-bottom:10px;">
-        <tr>
-            <td><b>QUALITY LOT BATCH:</b> """ + quality_name + """</td>
-            <td style="text-align:right;"><b>MACHINE ALLOCATION:</b> """ + machine_no + """</td>
-        </tr>
+        <tr><td><b>QUALITY LOT BATCH:</b> [VAL_QUAL]</td><td style="text-align:right;"><b>MACHINE ALLOCATION:</b> [VAL_MACH]</td></tr>
     </table>
 
     <div class="section-head">INPUT REGISTER RECORD</div>
     <table style="width:100%; font-size:11.5px; padding: 4px 0;">
-        <tr>
-            <td>Roving Hank 1: """ + str(in_a) + """ | Hank 2: """ + str(in_b) + """</td>
-            <td>Base 1: """ + str(in_c) + """ Den | Base 2: """ + str(in_d) + """ Den</td>
-            <td>Cover: """ + str(in_e) + """ Den | Target: """ + str(in_f) + """ Den</td>
-        </tr>
+        <tr><td>Roving Hank 1: [VAL_IN_A] | Hank 2: [VAL_IN_B]</td><td>Base 1: [VAL_IN_C] Den | Base 2: [VAL_IN_D] Den</td><td>Cover: [VAL_IN_E] Den | Target: [VAL_IN_F] Den</td></tr>
     </table>
 
     <div class="section-head">SECTION A & B: DRAFTING SPEED CONSTANTS</div>
     <table class="data-table">
-        <tr><td style="width:65%;">01) Total Draft</td><td style="text-align:right; font-weight:bold; color:#1E3A8A;">""" + str(p1_total_draft) + """</td></tr>
-        <tr><td>02) Main Draft</td><td style="text-align:right;">""" + str(p2_main_draft) + """</td></tr>
-        <tr><td>03) I.R Draft (Intermediate Roller Slub / Base)</td><td style="text-align:right;">""" + str(p3_ir_draft_slub) + " / " + str(p3_ir_draft_base) + """</td></tr>
-        <tr><td>04) B.R Draft (Back Roller Constant)</td><td style="text-align:right;">""" + str(p4_br_draft) + """</td></tr>
-        <tr><td>05) Avg Slub Length Matrix</td><td style="text-align:right;">""" + str(p5_avg_slub_len) + """ mm</td></tr>
-        <tr><td>06) Avg Draft Combined</td><td style="text-align:right;">""" + str(p6_avg_draft) + """</td></tr>
-        <tr><td>07) Random Length Modifier</td><td style="text-align:right;">Slub: 49.0%/58.0%/60.0% | Base: 12.0%</td></tr>
-        <tr><td>08) Core Tension Percentage</td><td style="text-align:right;">-1.00% underfeed</td></tr>
-        <tr><td>09) F.R Overfeed Modifier</td><td style="text-align:right;">-3.00% standard</td></tr>
-        <tr><td>10) Slub Length Sequence Profiles</td><td style="text-align:right;">180mm / 160mm / 183mm</td></tr>
-        <tr><td>11) Slub-to-Slub Space Nodes</td><td style="text-align:right;">85 mm constant</td></tr>
-        <tr><td>12) TPI (Twists Per Inch)</td><td style="text-align:right; font-weight:bold;">""" + str(p12_tpi) + """ TPI</td></tr>
-        <tr><td>13) TPM (Twists Per Meter)</td><td style="text-align:right; font-weight:bold;">""" + str(p13_tpm) + """ TPM</td></tr>
-        <tr><td>14) FRS MPM Delivery Velocity</td><td style="text-align:right;">""" + str(p14_frs_mpm) + """ MPM</td></tr>
-        <tr><td>15) Spindle Running Speed</td><td style="text-align:right;">""" + str(p15_spindle_speed_act) + """ RPM</td></tr>
-        <tr><td>16) Front Roller Dynamic Speed</td><td style="text-align:right;">""" + str(p16_fr_speed_rpm) + " RPM / " + str(p16_fr_delivery_mpm) + """ MPM</td></tr>
-        <tr><td>17) Winding Tube Overfeed Target</td><td style="text-align:right;">8.00% compact tension</td></tr>
-        <tr><td>18) Core Roller Active Drive Feed</td><td style="text-align:right;">准 """ + str(p18_core_speed_rpm) + " RPM / " + str(p18_core_delivery_mpm) + """ MPM</td></tr>
-        <tr><td>19) Winding Drum Operating Velocity</td><td style="text-align:right;">""" + str(p19_winding_speed_rpm) + " RPM / " + str(p19_winding_delivery_mpm) + """ MPM</td></tr>
-    </table>
-
-    <div class="section-head">SECTION C & D: MATERIAL MASS ANALYSIS</div>
-    <table class="data-table">
-        <tr><td style="width:65%;">20) Twist Contraction Factor</td><td style="text-align:right;">1.85% linear contraction</td></tr>
-        <tr><td>21) Actual Realized Delivery Denier</td><td style="text-align:right;">准 """ + str(p21_delivery_denier) + """ Denier</td></tr>
-        <tr><td>22) Mechanical K Factor Constant</td><td style="text-align:right;">0.9547 active</td></tr>
-        <tr><td>23) Estimated Waste Threshold</td><td style="text-align:right;">0.00% waste | +0.16% moisture gain</td></tr>
-        <tr><td><b>24) Result Denier Target (F)</b></td><td style="text-align:right; font-weight:bold; color:#1E3A8A;">""" + str(in_f) + """ Denier</td></tr>
-        <tr><td>25) CSP Upper Boundary Standard</td><td style="text-align:right;">1962 premium limit</td></tr>
-        <tr><td>26) Composite Result Count (Ne)</td><td style="text-align:right;">""" + str(p26_result_count_ne) + """ Ne</td></tr>
-        <tr><td>27) Count CV% Bobbin Variance</td><td style="text-align:right;">2.6% structural consistency</td></tr>
-        <tr><td>28) Yarn Single Strand Strength</td><td style="text-align:right;">""" + str(p28_strength_lbs) + """ LBS</td></tr>
-        <tr><td>29) Strength CV% Margin Limit</td><td style="text-align:right;">5.2% loops check</td></tr>
-        <tr><td>30) Laboratory Quality Status</td><td style="text-align:right;">""" + ("Lab Connected" if uster_file_h else "Auto-Calculated") + """</td></tr>
-    </table>
-
-    <div class="section-head">SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
-    <table class="data-table">
-        <tr><td style="width:65%;">31) CVM % Total Mass Deviation</td><td style="text-align:right;">""" + str(p31_cvm_percent) + """%</td></tr>
-        <tr><td>32) Calculated Slubs Per Meter Rate</td><td style="text-align:right;">3.00 slubs/m</td></tr>
-        <tr><td>33) Mass Increase Injection Ratio</td><td style="text-align:right;">""" + str(p33_mass_increase_percent) + """%</td></tr>
-        <tr><td>34) Avg Slub Physical Length (cm)</td><td style="text-align:right;">""" + str(p34_avg_slub_len_cm) + """ cm</td></tr>
-        <tr><td>35) Avg Slub Spatial Distance (cm)</td><td style="text-align:right;">""" + str(p35_avg_slub_dist_cm) + """ cm</td></tr>
-        <tr><td>36) Visual Bobbin Package Check</td><td style="text-align:right;">Verified Cheese Build active</td></tr>
-        <tr class="highlight-row"><td>37) Grams / Meter / Hour Outturn</t
+        <tr><td style="width:65%;">01) Total Draft</td><td style="text-align:right; font-weight:bold; color:#1E3A8A;">[VAL_P1]</td></tr>
+        <tr><td>02) Main Draft</td><td style="text-align:right;">[VAL_P2]</td></tr>
+        <tr><td>03) I.R Draft (Intermediate Roller Slub / Base)</td><td style="text-align:right;">[VAL_P3]</td></tr>
+        <tr><td>04) B.R Draft (Back Roller Constant)</td><td style="text-align:right;">[VAL_P4]</td></tr>
+        <tr><td>05) Avg Slub Length Matrix</td><td style="text-align:right;">[VAL_P5] mm</td></tr>
+        <tr><td>06) Avg Draft Combined</td><td style="text-align:right;">[VAL_P6]</td></tr>
+        <tr><td>07) Random Length Modifier</td><td style
