@@ -1,4 +1,5 @@
 import streamlit as st
+import base64
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -95,7 +96,7 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 BLUEPRINT OUTPUT LEDGER (1-40)
+# 📤 SCREEN DISPLAY PERFORMANCE LEDGER (1-40)
 # ==========================================
 st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📜 OFFICIAL BATCH BLUEPRINT REPORT</h3>", unsafe_allow_html=True)
 
@@ -166,27 +167,5 @@ with st.container(border=True):
         {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 58.0},
         {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
         {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 60.0},
-        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "07", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "08 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "09", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "10 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0}
-    ]
-    st.table(step_data)
-
-    if fancy_bobbin_i:
-        st.markdown("#### **📸 ATTACHED PRODUCT MEDIA CONE IMAGE**")
-        st.image(fancy_bobbin_i, width=300)
-
-# NEW DIRECT DOWNLOAD BUTTON METHOD
-report_text = f"SHETTI APP REPORT - QUALITY: {quality_name}\n"
-for row in sec_ab_data + sec_cd_data + sec_ef_data:
-    report_text += f"{row['Parameter No & Specification Name']}: {row['Output Value']}\n"
-
-st.markdown("---")
-st.download_button(
-    label="📥 DOWNLOAD BATCH DATA REPORT (.TXT FILE)",
-    data=report_text,
-    file_name=f"Report_{quality_name}.txt",
-    mime="text/plain"
-)
+        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%":
+    
