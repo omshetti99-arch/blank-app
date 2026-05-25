@@ -105,7 +105,6 @@ with st.container(border=True):
     st.write(f"Roving Hank: {in_a} | Base 1: {in_c} Den | Base 2: {in_d} Den | Cover: {in_e} Den | Target: {in_f} Den")
     st.markdown("---")
     
-    # Section A & B Table Data Builder
     st.markdown("#### **🔹 SECTION A & B: DRAFTING SPEED CONSTANTS**")
     sec_ab_data = [
         {"Parameter No & Specification Name": "01) Total Draft", "Output Value": str(p1_total_draft)},
@@ -130,7 +129,6 @@ with st.container(border=True):
     ]
     st.table(sec_ab_data)
     
-    # Section C & D Table Data Builder
     st.markdown("#### **🔹 SECTION C & D: MATERIAL MASS ANALYSIS**")
     sec_cd_data = [
         {"Parameter No & Specification Name": "20) Twist Contraction Factor", "Output Value": "1.85% linear contraction"},
@@ -147,7 +145,6 @@ with st.container(border=True):
     ]
     st.table(sec_cd_data)
     
-    # Section E & F Table Data Builder
     st.markdown("#### **🔹 SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS**")
     sec_ef_data = [
         {"Parameter No & Specification Name": "31) CVM % Total Mass Deviation", "Output Value": f"{p31_cvm_percent}%"},
@@ -162,7 +159,6 @@ with st.container(border=True):
     ]
     st.table(sec_ef_data)
 
-    # FIXED: 40) 10-Step Matrix Display Section (All Syntax Errors Removed)
     st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
     step_data = [
         {"STEP": "01", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
@@ -178,10 +174,19 @@ with st.container(border=True):
     ]
     st.table(step_data)
 
-    # Render uploaded yarn bobbin image at the very end of ledger
     if fancy_bobbin_i:
         st.markdown("#### **📸 ATTACHED PRODUCT MEDIA CONE IMAGE**")
         st.image(fancy_bobbin_i, width=300)
 
-st.success("🎉 SHETTI APP RUNNING SUCCESSFUL WITH 1-40 REGISTER!")
-                                                                                        
+# NEW DIRECT DOWNLOAD BUTTON METHOD
+report_text = f"SHETTI APP REPORT - QUALITY: {quality_name}\n"
+for row in sec_ab_data + sec_cd_data + sec_ef_data:
+    report_text += f"{row['Parameter No & Specification Name']}: {row['Output Value']}\n"
+
+st.markdown("---")
+st.download_button(
+    label="📥 DOWNLOAD BATCH DATA REPORT (.TXT FILE)",
+    data=report_text,
+    file_name=f"Report_{quality_name}.txt",
+    mime="text/plain"
+)
