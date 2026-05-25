@@ -1,4 +1,5 @@
 import streamlit as st
+import base64
 
 # Standard responsive layout workspace initialization
 st.set_page_config(
@@ -116,9 +117,9 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 SCREEN DISPLAY PERFORMANCE LEDGER (FULL 1-39 FIXED)
+# 📤 SCREEN DISPLAY PERFORMANCE LEDGER (1-40)
 # ==========================================
-st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📤 {OUTPUT} PERFORMANCE LEDGER (1-39)</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📤 {OUTPUT} PERFORMANCE LEDGER (1-40)</h3>", unsafe_allow_html=True)
 
 with st.container(border=True):
     st.markdown(f"**BATCH QUALITY LOT:** {quality_name} | **LOCATION:** {machine_no}")
@@ -169,30 +170,60 @@ with st.container(border=True):
     st.info(f"💡 **38) GRAMS / 8 HOURS SHIFT YIELD:** {p38_grams_shift} g / Shift")
     st.write(f"**39) FANCY YARN CONE STATUS (I):** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
 
+    # NEW: Parameter 40 Screen Display Grid Setup
+    st.markdown("---")
+    st.subheader("📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS")
+    
+    step_data = [
+        {"STEP": "01", "TWIST (TPM)": 510, "LENGTH (MM)": 180, "FR (%)": -3.00, "IR (DRAFT)": 26.50, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 27.825, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 49.0},
+        {"STEP": "02 (Slub)", "TWIST (TPM)": 510, "LENGTH (MM)": 85, "FR (%)": -3.00, "IR (DRAFT)": 6.20, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 6.510, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 12.0},
+        {"STEP": "03", "TWIST (TPM)": 510, "LENGTH (MM)": 160, "FR (%)": -3.00, "IR (DRAFT)": 26.50, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 27.825, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 58.0},
+        {"STEP": "04 (Slub)", "TWIST (TPM)": 510, "LENGTH (MM)": 85, "FR (%)": -3.00, "IR (DRAFT)": 6.20, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 6.510, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 12.0},
+        {"STEP": "05", "TWIST (TPM)": 510, "LENGTH (MM)": 183, "FR (%)": -3.00, "IR (DRAFT)": 26.50, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 27.825, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 60.0},
+        {"STEP": "06 (Slub)", "TWIST (TPM)": 510, "LENGTH (MM)": 85, "FR (%)": -3.00, "IR (DRAFT)": 6.20, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 6.510, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 12.0},
+        {"STEP": "07", "TWIST (TPM)": 510, "LENGTH (MM)": 180, "FR (%)": -3.00, "IR (DRAFT)": 26.50, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 27.825, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 49.0},
+        {"STEP": "08 (Slub)", "TWIST (TPM)": 510, "LENGTH (MM)": 85, "FR (%)": -3.00, "IR (DRAFT)": 6.20, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 6.510, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 12.0},
+        {"STEP": "09", "TWIST (TPM)": 510, "LENGTH (MM)": 180, "FR (%)": -3.00, "IR (DRAFT)": 26.50, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 27.825, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 49.0},
+        {"STEP": "10 (Slub)", "TWIST (TPM)": 510, "LENGTH (MM)": 85, "FR (%)": -3.00, "IR (DRAFT)": 6.20, "BR (DRAFT)": 1.05, "TOTAL DRAFT": 6.510, "CORE (%)": -1.00, "WIND (%)": 8.00, "RAND. LEN (%)": 12.0}
+    ]
+    st.dataframe(step_data, use_container_width=True, hide_index=True)
+
 # ==========================================
-# 📥 100% MOBILE-SAFE BLUEPRINT PDF GENERATOR (HACK)
+# 📥 EXTRACTION & BINARY CONE IMAGE EMBED ENGINE
 # ==========================================
 st.markdown("---")
 st.markdown("<h3 style='color: #0F172A; font-weight: bold;'>📥 SAVE & SHARE CONTROL OPTIONS</h3>", unsafe_allow_html=True)
 
-# Build a beautiful, structured HTML blueprint certificate inside a printing window
+img_html_tag = ""
+if fancy_bobbin_i:
+    try:
+        bytes_data = fancy_bobbin_i.getvalue()
+        b64_img = base64.b64encode(bytes_data).decode()
+        img_html_tag = f'<br><br><div style="text-align:center;"><p style="font-size:12px;font-weight:bold;color:#1E3A8A;">39) FANCY YARN CONE PHOTO ATTACHMENT</p><img src="data:image/png;base64,{b64_img}" style="max-width:280px;border:2px solid #CBD5E1;border-radius:4px;padding:4px;"/></div>'
+    except Exception:
+        img_html_tag = ''
+else:
+    img_html_tag = '<br><br><p style="color:#64748B;font-size:11px;text-align:center;font-style:italic;">[39] Awaiting Fancy Yarn Cone Photo Upload...</p>'
+
+# Build structured blueprint certificate matrix including Parameter 40 Table Setup
 blueprint_html = f"""
 <html>
 <head>
 <style>
-    body {{ font-family: Arial, sans-serif; padding: 20px; background-color: #ffffff; color: #000; }}
-    .blueprint-box {{ border: 3px double #1E3A8A; padding: 20px; border-radius: 8px; max-width: 700px; margin: 0 auto; }}
-    .header-table {{ width: 100%; border-bottom: 2px solid #1E3A8A; padding-bottom: 10px; margin-bottom: 20px; }}
+    body {{ font-family: Arial, sans-serif; padding: 10px; background-color: #ffffff; color: #000; }}
+    .blueprint-box {{ border: 3px double #1E3A8A; padding: 20px; border-radius: 8px; max-width: 750px; margin: 0 auto; }}
+    .header-table {{ width: 100%; border-bottom: 2px solid #1E3A8A; padding-bottom: 10px; margin-bottom: 15px; }}
     .title {{ font-size: 22px; color: #1E3A8A; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0; }}
     .subtitle {{ font-size: 11px; color: #475569; text-align: center; margin: 4px 0 0 0; letter-spacing: 1px; }}
-    .data-table {{ width: 100%; border-collapse: collapse; margin-top: 15px; }}
-    .data-table th {{ background-color: #1E3A8A; color: white; padding: 8px; text-align: left; font-size: 12px; font-weight: bold; text-transform: uppercase; }}
-    .data-table td {{ border-bottom: 1px solid #CBD5E1; padding: 7px 8px; font-size: 11.5px; }}
-    .section-head {{ background-color: #E0F2FE; color: #1E3A8A; font-weight: bold; font-size: 12px; padding: 5px 8px; text-transform: uppercase; margin-top: 15px; border-left: 4px solid #1E3A8A; }}
+    .data-table {{ width: 100%; border-collapse: collapse; margin-top: 10px; }}
+    .data-table td {{ border-bottom: 1px solid #CBD5E1; padding: 6px 8px; font-size: 11.5px; }}
+    .section-head {{ background-color: #E0F2FE; color: #1E3A8A; font-weight: bold; font-size: 12px; padding: 5px 8px; text-transform: uppercase; margin-top: 12px; border-left: 4px solid #1E3A8A; }}
     .highlight-row {{ background-color: #F0FDF4; font-weight: bold; color: #15803D; border: 1px solid #BBF7D0; }}
-    @media print {{
-        .print-btn {{ display: none !important; }}
-    }}
+    
+    .slub-table {{ width: 100%; border-collapse: collapse; margin-top: 10px; text-align: center; font-size: 10.5px; }}
+    .slub-table th {{ background-color: #1E3A8A; color: white; padding: 6px; font-weight: bold; }}
+    .slub-table td {{ border: 1px solid #CBD5E1; padding: 5px; }}
+    .slub-row {{ background-color: #FFF7ED; color: #C2410C; font-weight: bold; }}
 </style>
 </head>
 <body>
@@ -206,7 +237,7 @@ blueprint_html = f"""
         </tr>
     </table>
     
-    <table style="width:100%; font-size:12px; margin-bottom:15px;">
+    <table style="width:100%; font-size:12px; margin-bottom:10px;">
         <tr>
             <td><b>QUALITY LOT BATCH:</b> {quality_name}</td>
             <td style="text-align:right;"><b>MACHINE ALLOCATION:</b> {machine_no}</td>
@@ -214,7 +245,7 @@ blueprint_html = f"""
     </table>
 
     <div class="section-head">INPUT REGISTER RECORD</div>
-    <table style="width:100%; font-size:11.5px; padding: 5px 0;">
+    <table style="width:100%; font-size:11.5px; padding: 4px 0;">
         <tr>
             <td>Roving Hank 1: {in_a} | Roving Hank 2: {in_b}</td>
             <td>Base 1: {in_c} Den | Base 2: {in_d} Den</td>
@@ -230,50 +261,57 @@ blueprint_html = f"""
         <tr><td>04) B.R Draft (Back Roller Constant)</td><td style="text-align:right;">{p4_br_draft}</td></tr>
         <tr><td>05) Avg Slub Length Matrix</td><td style="text-align:right;">{p5_avg_slub_len} mm</td></tr>
         <tr><td>06) Avg Draft Combined</td><td style="text-align:right;">{p6_avg_draft}</td></tr>
-        <tr><td>07) Random Length Modifier</td><td style="text-align:right;">Slub: 49.0%/58.0%/60.0% | Base: 12.0%</td></tr>
-        <tr><td>08) Core Tension Percentage</td><td style="text-align:right;">-1.00% underfeed</td></tr>
-        <tr><td>09) F.R Overfeed Modifier</td><td style="text-align:right;">-3.00% standard</td></tr>
-        <tr><td>10) Slub Length Sequence Profiles</td><td style="text-align:right;">180mm / 160mm / 183mm</td></tr>
-        <tr><td>11) Slub-to-Slub Space Nodes</td><td style="text-align:right;">85 mm constant</td></tr>
         <tr><td>12) TPI (Twists Per Inch)</td><td style="text-align:right; font-weight:bold;">{p12_tpi} TPI</td></tr>
         <tr><td>13) TPM (Twists Per Meter)</td><td style="text-align:right; font-weight:bold;">{p13_tpm} TPM</td></tr>
-        <tr><td>14) FRS MPM Delivery Velocity</td><td style="text-align:right;">{p14_frs_mpm} MPM</td></tr>
         <tr><td>15) Spindle Running Speed</td><td style="text-align:right;">{p15_spindle_speed_act} RPM</td></tr>
         <tr><td>16) Front Roller Dynamic Speed</td><td style="text-align:right;">{p16_fr_speed_rpm} RPM / {p16_fr_delivery_mpm} MPM</td></tr>
-        <tr><td>17) Winding Tube Overfeed Target</td><td style="text-align:right;">8.00% compact tension</td></tr>
-        <tr><td>18) Core Roller Active Drive Feed</td><td style="text-align:right;">{p18_core_speed_rpm} RPM / {p18_core_delivery_mpm} MPM</td></tr>
-        <tr><td>19) Winding Drum Operating Velocity</td><td style="text-align:right;">{p19_winding_speed_rpm} RPM / {p19_winding_delivery_mpm} MPM</td></tr>
     </table>
 
     <div class="section-head">SECTION C & D: MATERIAL MASS ANALYSIS</div>
     <table class="data-table">
-        <tr><td>20) Twist Contraction Factor</td><td style="text-align:right;">1.85% linear contraction</td></tr>
         <tr><td>21) Actual Realized Delivery Denier</td><td style="text-align:right;">{p21_delivery_denier} Denier</td></tr>
-        <tr><td>22) Mechanical K Factor Constant</td><td style="text-align:right;">0.9547 active</td></tr>
-        <tr><td>23) Estimated Waste Threshold</td><td style="text-align:right;">0.00% waste | +0.16% moisture gain</td></tr>
         <tr><td><b>24) Result Denier Target (F)</b></td><td style="text-align:right; font-weight:bold; color:#1E3A8A;">{in_f} Denier</td></tr>
-        <tr><td>25) CSP Upper Boundary Standard</td><td style="text-align:right;">1962 premium limit</td></tr>
         <tr><td>26) Composite Result Count (Ne)</td><td style="text-align:right;">{p26_result_count_ne} Ne</td></tr>
-        <tr><td>27) Count CV% Bobbin Variance</td><td style="text-align:right;">2.6% structural consistency</td></tr>
         <tr><td>28) Yarn Single Strand Strength</td><td style="text-align:right;">{p28_strength_lbs} LBS</td></tr>
-        <tr><td>29) Strength CV% Margin Limit</td><td style="text-align:right;">5.2% loops check</td></tr>
-        <tr><td>30) Laboratory Quality Status</td><td style="text-align:right;">{"Lab Connected" if uster_file_h else "Auto-Calculated"}</td></tr>
     </table>
 
     <div class="section-head">SECTION E & F: QUALITY & PRODUCTION SHIFT METRICS</div>
     <table class="data-table">
         <tr><td>31) CVM % Total Mass Deviation</td><td style="text-align:right;">{p31_cvm_percent}%</td></tr>
-        <tr><td>32) Calculated Slubs Per Meter Rate</td><td style="text-align:right;">3.00 slubs/m</td></tr>
         <tr><td>33) Mass Increase Injection Ratio</td><td style="text-align:right;">{p33_mass_increase_percent}%</td></tr>
-        <tr><td>34) Avg Slub Physical Length (cm)</td><td style="text-align:right;">{p34_avg_slub_len_cm} cm</td></tr>
-        <tr><td>35) Avg Slub Spatial Distance (cm)</td><td style="text-align:right;">{p35_avg_slub_dist_cm} cm</td></tr>
-        <tr><td>36) Visual Bobbin Package Check</td><td style="text-align:right;">Verified Cheese Build active</td></tr>
         <tr class="highlight-row"><td>37) Grams / Meter / Hour Outturn</td><td style="text-align:right;">{p37_grams_meter_hour} g/m/hr</td></tr>
         <tr class="highlight-row"><td>38) Grams / 8 Hours Shift Yield</td><td style="text-align:right;">{p38_grams_shift} g / Shift</td></tr>
-        <tr><td>39) Fancy Yarn Cone Status</td><td style="text-align:right;">{"Cone Logged" if fancy_bobbin_i else "Awaiting"}</td></tr>
+    </table>
+
+    <div class="section-head">40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS</div>
+    <table class="slub-table">
+        <tr>
+            <th>STEP</th>
+            <th>TWIST (TPM)</th>
+            <th>LENGTH (MM)</th>
+            <th>FR (%)</th>
+            <th>IR (DRAFT)</th>
+            <th>BR (DRAFT)</th>
+            <th>TOTAL DRAFT</th>
+            <th>CORE (%)</th>
+            <th>WIND (%)</th>
+            <th>RAND. LEN (%)</th>
+        </tr>
+        <tr><td>01</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-row"><td>02 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>03</td><td>510</td><td>160</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>58.0</td></tr>
+        <tr class="slub-row"><td>04 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>05</td><td>510</td><td>183</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>60.0</td></tr>
+        <tr class="slub-row"><td>06 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>07</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-row"><td>08 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
+        <tr><td>09</td><td>510</td><td>180</td><td>-3.00</td><td>26.50</td><td>1.05</td><td>27.825</td><td>-1.00</td><td>8.00</td><td>49.0</td></tr>
+        <tr class="slub-row"><td>10 (Slub)</td><td>510</td><td>85</td><td>-3.00</td><td>6.20</td><td>1.05</td><td>6.510</td><td>-1.00</td><td>8.00</td><td>12.0</td></tr>
     </table>
     
-    <div style="margin-top:25px; text-align:center; font-size:10px; color:#64748B;">
+    {img_html_tag}
+    
+    <div style="margin-top:20px; text-align:center; font-size:10px; color:#64748B; border-top:1px dashed #CBD5E1; padding-top:10px;">
         SHETTI INDUSTRIAL CERTIFIED BLUEPRINT DIGITAL SIGNATURE SIGNED
     </div>
 </div>
@@ -290,17 +328,4 @@ with st.container(border=True):
         f"""
         <script>
         function openBlueprintWindow() {{
-            var printWindow = window.open('', '_blank');
-            printWindow.document.write({repr(blueprint_html)});
-            printWindow.document.close();
-            printWindow.focus();
-            setTimeout(function() {{ printWindow.print(); }}, 500);
-        }}
-        </script>
-        <button onclick="openBlueprintWindow()" style="background-color:#1E3A8A; color:white; padding:12px 20px; border:none; border-radius:4px; cursor:pointer; font-weight:bold; width:100%; font-size:14px;">
-            🖨️ OPEN & GENERATE OFFICIAL BATCH BLUEPRINT PDF (1-39 DATA)
-        </button>
-        """,
-        height=60
-    )
-    
+           
