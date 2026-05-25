@@ -162,19 +162,19 @@ with st.container(border=True):
     ]
     st.table(sec_ef_data)
 
-    # 40) 10-Step Matrix Display Section
+    # FIXED: 40) 10-Step Matrix Display Section (All Syntax Errors Removed)
     st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
     step_data = [
-        {"STEP": "01", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "02 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "07", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "08 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "09", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%"},
-        {"STEP": "10 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%"}
+        {"STEP": "01", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
+        {"STEP": "02 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
+        {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 58.0},
+        {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
+        {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 60.0},
+        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
+        {"STEP": "07", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
+        {"STEP": "08 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
+        {"STEP": "09", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
+        {"STEP": "10 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0}
     ]
     st.table(step_data)
 
@@ -183,10 +183,5 @@ with st.container(border=True):
         st.markdown("#### **📸 ATTACHED PRODUCT MEDIA CONE IMAGE**")
         st.image(fancy_bobbin_i, width=300)
 
-st.success("🎉 **యాప్ విజయవంతంగా రన్ అయింది!**")
-st.info("💡 **మొబైల్‌లో క్లీన్ PDF రిపోర్ట్ సేవ్ చేసే విధానం:**\n\n"
-        "1. మీ మొబైల్ క్రోమ్ బ్రౌజర్ పైన కుడివైపు మూలలో ఉన్న **త్రీ-డాట్స్ (3 vertical dots `⋮`)** నొక్కండి.\n"
-        "2. అక్కడ కిందకు స్క్రోల్ చేసి **`Share...`** (షేర్) బటన్ నొక్కండి.\n"
-        "3. వచ్చే ఆప్షన్లలో ప్రింటర్ గుర్తు ఉన్న **`Print`** ఆప్షన్‌ను సెలెక్ట్ చేసుకోండి.\n"
-        "4. ప్రింట్ పేజీ ఓపెన్ అవ్వగానే, పైన ఉండే **`Save as PDF`** లేదా ఆకుపచ్చ **`PDF 📥`** డౌన్‌లోడ్ బటన్ నొక్కండి. అంతే, మొత్తం 1 నుండి 40 పారామితులు, టేబుల్స్ మరియు ఫోటోలతో కూడిన పక్కా రిపోర్ట్ మీ ఫోన్ లోకి సేవ్ అయిపోతుంది!")
-    
+st.success("🎉 SHETTI APP RUNNING SUCCESSFUL WITH 1-40 REGISTER!")
+                                                                                        
