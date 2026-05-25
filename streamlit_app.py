@@ -95,7 +95,7 @@ p37_grams_meter_hour = round(grams_per_meter_val * p16_fr_delivery_mpm * 60, 2)
 p38_grams_shift = round(p37_grams_meter_hour * 8, 1)
 
 # ==========================================
-# 📤 SCREEN DISPLAY PERFORMANCE LEDGER (1-40)
+# 📤 COMPACT PRINT REGISTER DISPLAY PANEL
 # ==========================================
 st.markdown("<h3 style='color: #1E3A8A; font-weight: bold;'>📜 OFFICIAL BATCH BLUEPRINT REPORT</h3>", unsafe_allow_html=True)
 
@@ -105,11 +105,12 @@ with st.container(border=True):
     st.write(f"Roving Hank: {in_a} | Base 1: {in_c} Den | Base 2: {in_d} Den | Cover: {in_e} Den | Target: {in_f} Den")
     st.markdown("---")
     
+    # Render line by line values cleanly
     st.markdown("#### **🔹 SECTION A & B: DRAFTING SPEED CONSTANTS**")
     st.write(f"**01) Total Draft:** {p1_total_draft}")
     st.write(f"**02) Main Draft:** {p2_main_draft}")
-    st.write(f"**03) I.R Draft (Intermediate Roller Slub / Base):** {p3_ir_draft_slub} / {p3_ir_draft_base}")
-    st.write(f"**04) B.R Draft (Back Roller Constant):** {p4_br_draft}")
+    st.write(f"**03) I.R Draft (Slub / Base):** {p3_ir_draft_slub} / {p3_ir_draft_base}")
+    st.write(f"**04) B.R Draft Constant:** {p4_br_draft}")
     st.write(f"**05) Avg Slub Length Matrix:** {p5_avg_slub_len} mm")
     st.write(f"**06) Avg Draft Combined:** {p6_avg_draft}")
     st.write(f"**07) Random Length Modifier:** Slub: 49.0%/58.0%/60.0% | Base: 12.0%")
@@ -150,24 +151,40 @@ with st.container(border=True):
     st.info(f"💡 **38) GRAMS / 8 HOURS SHIFT YIELD:** {p38_grams_shift} g / Shift")
     st.write(f"**39) Fancy Yarn Cone Status:** {'Cone Attached & Logged' if fancy_bobbin_i else 'Awaiting Cone Photo'}")
 
+    # Section 40 Text Format (Bypasses all dataframe printing crashes)
     st.markdown("#### **📊 40) 10-STEP DYNAMIC REPEAT CYCLE DISPLAY SETTINGS**")
-    step_data = [
-        {"STEP": "01", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "02 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "03", "TWIST": 510, "LEN(MM)": 160, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 58.0},
-        {"STEP": "04 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "05", "TWIST": 510, "LEN(MM)": 183, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 60.0},
-        {"STEP": "06 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "07", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "08 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0},
-        {"STEP": "09", "TWIST": 510, "LEN(MM)": 180, "FR%": -3.0, "IR DF": 26.5, "BR DF": 1.05, "TOTAL DF": 27.825, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 49.0},
-        {"STEP": "10 (Slub)", "TWIST": 510, "LEN(MM)": 85, "FR%": -3.0, "IR DF": 6.2, "BR DF": 1.05, "TOTAL DF": 6.510, "CORE%": -1.0, "WIND%": 8.0, "RAND%": 12.0}
-    ]
-    st.table(step_data)
+    st.text(
+        "01) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
+        "02) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
+        "03) [TPM: 510 | LEN: 160mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 58%]\n"
+        "04) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
+        "05) [TPM: 510 | LEN: 183mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 60%]\n"
+        "06) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
+        "07) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
+        "08) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]\n"
+        "09) [TPM: 510 | LEN: 180mm | FR: -3.0% | IR: 26.50 | BR: 1.05 | TOTAL: 27.82 | CORE: -1.0% | WIND: 8.0% | RAND: 49%]\n"
+        "10) (Slub) [TPM: 510 | LEN: 85mm | FR: -3.0% | IR: 6.20 | BR: 1.05 | TOTAL: 6.51 | CORE: -1.0% | WIND: 8.0% | RAND: 12%]"
+    )
 
     if fancy_bobbin_i:
-        st.markdown("#### **📸 ATTACHED PRODUCT MEDIA CONE IMAGE**")
-        st.image(fancy_bobbin_i, width=300)
+        st.markdown("---")
+        st.image(fancy_bobbin_i, width=260)
 
-st.success("🎉 SHETTI APP RUNNING SUCCESSFUL WITH 1-40 REGISTER!")
-        
+# Build dynamic simple text summary for download button
+txt_summary = f"SHETTI APP REPORT\\nQUALITY: {quality_name} | M/C: {machine_no}\\nTotal Draft: {p1_total_draft}\\nTPM: {p13_tpm}\\nShift Yield: {p38_grams_shift} g"
+
+st.markdown("---")
+st.download_button(
+    label="📥 DOWNLOAD DATA SUMMARY (.TXT)",
+    data=txt_summary,
+    file_name=f"Report_{quality_name}.txt",
+    mime="text/plain"
+)
+
+with st.container(border=True):
+    st.markdown("##### **📄 SAVE AS COMPACT BLUEPRINT PDF**")
+    st.info("💡 **కేవలం 1 లేదా 2 పేజీల్లో PDF క్లీన్‌గా సేవ్ చేసే విధానం:**\n\n"
+            "1. మీ మొబైల్ క్రోమ్ బ్రౌజర్ పైన కుడివైపు మూలలో ఉన్న **త్రీ-డాట్స్ (3 vertical dots `⋮`)** నొక్కండి.\n"
+            "2. అక్కడ కిందకు స్క్రోల్ చేసి **`Share...`** (షేర్) బటన్ నొక్కండి.\n"
+            "3. వచ్చే ఆప్షన్లలో ప్రింటర్ గుర్తు ఉన్న **`Print`** ఆప్షన్‌ను సెలెక్ట్ చేసుకోండి.\n"
+            "4. ప్రింట్ పేజీ ఓపెన్ అవ్వగానే, పైన ఉండే **`Save as PDF`** నొక్కండి. అంతే, మొత్తం 40 పారామితులు, టేబుల్స్ మరియు ఫోటోలతో కూడిన పక్కా బ్లూప్రింట్ రిపోర్ట్ మీ ఫోన్ లోకి సేవ్ అయిపోతుంది!")
